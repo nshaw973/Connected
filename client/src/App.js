@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import AboutPage from "./pages/AboutPage";
+import HomePage from "./pages/Homepage";  
+import CandidatePage from "./pages/CandidatePage";
 import MainPage from './pages/MainPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -10,37 +13,6 @@ import Signup from './pages/Signup';
 import './index.css';
 
 
-// Once apollo is up and running, unComment this
-/* 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'; */
-
-/* 
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-
-}); 
-*/
-
-/* const App = () => {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<MainPage />}
-            />
-          </Routes>
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
-}; */
-
-// Delete this once Apollo is running
 
 const App = () => {
 
@@ -52,7 +24,13 @@ const App = () => {
       case 'Login':
         return <Login />;
       case 'Signup':
-        return <Signup />
+        return <Signup />;
+      case 'About':
+        return <AboutPage />;
+      case 'HomePage':
+        return <HomePage />;
+      case 'CandidatePage'
+        return <CandidatePage />;
       default:
         return <h1> 404 Page Not Found</h1>
     }
