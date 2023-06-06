@@ -6,6 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/Homepage';
@@ -13,6 +14,7 @@ import CandidatePage from './pages/CandidatePage';
 import MainPage from './pages/MainPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import JobsPage from './pages/JobsPage';
 //Pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -34,47 +36,31 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-const App = () => {
-  const [currentPage, setCurrentPage] = useState('MainPage');
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'MainPage':
-        return <MainPage />;
-      case 'Login':
-        return <Login />;
-      case 'Signup':
-        return <Signup />;
-      case 'About':
-        return <AboutPage />;
-      case 'HomePage':
-        return <HomePage />;
-      case 'CandidatePage':
-        return <CandidatePage />;
-      default:
-        return <h1> 404 Page Not Found</h1>;
-    }
-  };
 
-  const handlePageChange = (page) => setCurrentPage(page);
+const App = () => {
 
   return (
-    <>
-      <ApolloProvider client={client}>
-        <div className="flex flex-col min-h-screen">
-          <Navbar
-            currentPage={currentPage}
-            handlePageChange={handlePageChange}
-          />
-          <section className="flex flex-col flex-grow">{renderPage()}</section>
-          <Footer />
-        </div>
-      </ApolloProvider>
-    </>
+    <div className="xapp">
+      <Router>
+        <Navbar />
+        <Routes>
+
+          <Route path="/" element={<HomePage />} />
+          <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/candidate" element={<CandidatePage />} />
+          <Route path="/login " element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+    
+        </Routes>
+        <Footer />
+      </Router>
+    </div>
+
   );
 };
 

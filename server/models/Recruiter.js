@@ -1,31 +1,24 @@
 const { Schema, model } = require('mongoose');
 const User = require('./User');
+const jobSchema = require('./Job');
 
 const recruiterSchema = new Schema({
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-    jobs: {
-      type: [String],
-      default: [],
+    company: {
+      type: String,
+      required: true,
+      maxLength: 50,
     },
+    jobs: [jobSchema],
     desiredRoles: {
       type: [String],
       default: [],
     },
     companies: {
       type: [String],
-      default: [],
-    },
-    favorites: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Developer',
-      default: [],
-    },
-    bookmarks: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Developer',
       default: [],
     },
   });
