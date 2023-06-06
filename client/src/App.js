@@ -60,10 +60,7 @@ import Signup from './pages/Signup';
 // Styling
 import './index.css';
 
-
-
 const App = () => {
-
   const [currentPage, setCurrentPage] = useState('MainPage');
   const renderPage = () => {
     switch (currentPage) {
@@ -82,7 +79,7 @@ const App = () => {
       case 'JobsPage':
         return <JobsPage />;
       default:
-        return <h1> 404 Page Not Found</h1>
+        return <h1> 404 Page Not Found</h1>;
     }
   };
 
@@ -90,9 +87,11 @@ const App = () => {
 
   return (
     <>
-      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {renderPage()}
-      <Footer />
+      <div className='flex flex-col min-h-screen'>
+        <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+        <section className="flex flex-col flex-grow">{renderPage()}</section>
+        <Footer />
+      </div>
     </>
   );
 };
