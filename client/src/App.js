@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import AboutPage from "./pages/AboutPage";
-import HomePage from "./pages/Homepage";  
-import CandidatePage from "./pages/CandidatePage";
+import AboutPage from './pages/AboutPage';
+import HomePage from './pages/Homepage';
+import CandidatePage from './pages/CandidatePage';
 import MainPage from './pages/MainPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -13,6 +20,25 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 // Styling
 import './index.css';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 
 const App = () => {
@@ -39,62 +65,3 @@ const App = () => {
 };
 
 export default App;
-
-/************************* ****/
-/*** SWITCH STATEMENT COMPARE */
-/************************* ****/
-/* 
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-import AboutPage from "./pages/AboutPage";
-import HomePage from "./pages/Homepage";  
-import CandidatePage from "./pages/CandidatePage";
-import MainPage from './pages/MainPage';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import JobsPage from './pages/JobsPage';
-//Pages
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-// Styling
-import './index.css';
-
-const App = () => {
-  const [currentPage, setCurrentPage] = useState('MainPage');
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'MainPage':
-        return <HomePage />;
-      case 'Login':
-        return <Login />;
-      case 'Signup':
-        return <Signup />;
-      case 'About':
-        return <AboutPage />;
-      case 'HomePage':
-        return <HomePage />;
-      case 'CandidatePage':
-        return <CandidatePage />;
-      case 'JobsPage':
-        return <JobsPage />;
-      default:
-        return <h1> 404 Page Not Found</h1>;
-    }
-  };
-
-  const handlePageChange = (page) => setCurrentPage(page);
-
-  return (
-    <>
-      <div className='flex flex-col min-h-screen'>
-        <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
-        <section className="flex flex-col flex-grow">{renderPage()}</section>
-        <Footer />
-      </div>
-    </>
-  );
-};
-
-export default App;
-*/
