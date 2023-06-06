@@ -1,34 +1,29 @@
 const { Schema, model } = require('mongoose');
-const User = require('./User');
-
+const projectSchema = require('./Project').schema;
+const jobSchema = require('./Job').schema;
 
 const developerSchema = new Schema({
-    user: {
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  projects: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Project',
+  }],
+  githubUrl: {
+    type: String,
+  },
+  jobsAppliedTo: {
+    type: Schema.Types.ObjectId,
+    ref: "Jobs",
+  },
+  favoriteRecruiters: [
+    {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
-    role: {
-      type: String,
-      required: true,
-    },
-    experience: {
-      type: Number,
-      required: true,
-    },
-    projects: {
-      type: [String],
-      default: [],
-    },
-    favorites: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Recruiter',
-      default: [],
-    },
-    bookmarks: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Recruiter',
-      default: [],
-    },
-  });
+  ],
+});
 
-  module.exports = developerSchema
+module.exports = developerSchema;
