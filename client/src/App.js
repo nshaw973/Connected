@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,12 +11,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/Homepage';
 import CandidatePage from './pages/CandidatePage';
-import MainPage from './pages/MainPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
 //Pages
-import Login from './pages/Login';
+import Login from './pages/Login'
 import Signup from './pages/Signup';
 // Styling
 import './index.css';
@@ -40,27 +39,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 const App = () => {
-
   return (
-    <div className="xapp">
-      <Router>
-        <Navbar />
-        <Routes>
-
-          <Route path="/" element={<HomePage />} />
-          <Route path="/jobs" element={<JobsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/candidate" element={<CandidatePage />} />
-          <Route path="/login " element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-    
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
-
+    <ApolloProvider client={client}>
+      <div className="xapp flex flex-col min-h-screen">
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/jobs" element={<JobsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/candidate" element={<CandidatePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
+    </ApolloProvider>
   );
 };
 

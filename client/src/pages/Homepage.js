@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 
 function HomePage() {
   return (
-    <section id="home">
+    <section id="home" className='max-w-lg mx-auto flex justify-center items-center flex-col flex-grow'>
        <div className="home-bg">
         <Container>
           <h2 className="home-title">Let's Build Together</h2>

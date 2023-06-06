@@ -19,7 +19,7 @@ const Navbar = ({ currentPage, handlePageChange }) => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <a
-                  href="/home"
+                  href="/"
                   // onClick={() => handlePageChange('MainPage')}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
@@ -68,14 +68,14 @@ const Navbar = ({ currentPage, handlePageChange }) => {
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
               <a
-                href="/Signup"
+                href="/signup"
                 // onClick={() => handlePageChange('Signup')}
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Sign Up
               </a>
               <a
-                href="/Login"
+                href="/login"
                 // onClick={() => handlePageChange('Login')}
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >

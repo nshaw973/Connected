@@ -18,7 +18,7 @@ const LoginForm = () => {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
             id="email"
             type="email"
             placeholder="Enter your email"
@@ -32,7 +32,7 @@ const LoginForm = () => {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white"
             id="password"
             type="password"
             placeholder="Enter your password"
