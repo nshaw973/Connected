@@ -9,41 +9,7 @@ import Signup from './pages/Signup';
 // Styling
 import './index.css';
 
-
-// Once apollo is up and running, unComment this
-/* 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'; */
-
-/* 
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-
-}); 
-*/
-
-/* const App = () => {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<MainPage />}
-            />
-          </Routes>
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
-}; */
-
-// Delete this once Apollo is running
-
 const App = () => {
-
   const [currentPage, setCurrentPage] = useState('MainPage');
   const renderPage = () => {
     switch (currentPage) {
@@ -52,9 +18,9 @@ const App = () => {
       case 'Login':
         return <Login />;
       case 'Signup':
-        return <Signup />
+        return <Signup />;
       default:
-        return <h1> 404 Page Not Found</h1>
+        return <h1> 404 Page Not Found</h1>;
     }
   };
 
@@ -62,9 +28,11 @@ const App = () => {
 
   return (
     <>
-      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {renderPage()}
-      <Footer />
+      <div className='flex flex-col min-h-screen'>
+        <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+        <section className="flex flex-col flex-grow">{renderPage()}</section>
+        <Footer />
+      </div>
     </>
   );
 };
