@@ -33,8 +33,8 @@ function JobsPage() {
         <Row>
         {searchedJobsData.map((jobs) => {
             return (
-            <Col key={jobs.jobsId} md="4">
-                <Card key={jobs.jobsId} border='dark'>
+            <Col key={jobs.jobsId} md="4" style={{ paddingRight: "40px", paddingBottom: "40px" }}>
+                <Card key={jobs.jobsId} border='dark' >
             
                 <Card.Body>
 
