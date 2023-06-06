@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import AboutPage from "./pages/AboutPage";
+import HomePage from "./pages/Homepage";  
+import CandidatePage from "./pages/CandidatePage";
 import MainPage from './pages/MainPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -19,6 +22,12 @@ const App = () => {
         return <Login />;
       case 'Signup':
         return <Signup />;
+      case 'About':
+        return <AboutPage />;
+      case 'HomePage':
+        return <HomePage />;
+      case 'CandidatePage'
+        return <CandidatePage />;
       default:
         return <h1> 404 Page Not Found</h1>;
     }
