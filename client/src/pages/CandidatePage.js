@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Candidate from '../components/Candidate';
 import candidateData from '../placeholders/candidateData';
 import { Container, Row, Col } from 'react-bootstrap'
@@ -15,7 +15,7 @@ function CandidatePage() {
           {candidateData.map((Candidates, index) => (
           <Container fluid className="Candidate-section">
             <Container>
-              <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+              <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
                 <div className="textbackground row"> 
  
                   <Col md={4} className="Candidate-card">
@@ -28,6 +28,8 @@ function CandidatePage() {
                   />
                   </Col>
                 </div>
+                <br/>
+                <br/>
               </Row>
             </Container>
           </Container>

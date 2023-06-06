@@ -19,13 +19,22 @@ const Navbar = ({ currentPage, handlePageChange }) => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <a
-                  href="#home"
-                  onClick={() => handlePageChange('MainPage')}
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+                  href="/home"
+                  // onClick={() => handlePageChange('MainPage')}
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Connected
+                  Home
+                </a>
+
+                <a
+                  href="/jobs"
+                  // onClick={() => handlePageChange('MainPage')}
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Find a Job
                 </a>
               </div>
+              
             </div>
           </div>
           <form onSubmit={handleSearch} className="relative md:ml-4 w-full sm:w-auto">
@@ -59,15 +68,15 @@ const Navbar = ({ currentPage, handlePageChange }) => {
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
               <a
-                href="#Signup"
-                onClick={() => handlePageChange('Signup')}
+                href="/Signup"
+                // onClick={() => handlePageChange('Signup')}
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Sign Up
               </a>
               <a
-                href="#Login"
-                onClick={() => handlePageChange('Login')}
+                href="/Login"
+                // onClick={() => handlePageChange('Login')}
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Login

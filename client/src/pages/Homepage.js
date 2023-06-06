@@ -15,12 +15,11 @@ function HomePage() {
           </p>
           <button
             className="jobs-btn"
-            onClick={() => {
-              window.open("https://www.linkedin.com/");
-            }}
+            href="/contact"
           >
             Find jobs
           </button>
+          <br />
           <button
             className="candidates-btn"
             onClick={() => {
