@@ -72,32 +72,32 @@ const handleSaveJobs = async (jobsId) => {
         </h2>
         <Row>
         {searchedJobsData.map((jobs) => {
-            return (
-            <Col key={jobs.jobsId} md="4" style={{ paddingRight: "40px", paddingBottom: "40px" }}>
-                <Card key={jobs.jobsId} border='dark' >
-            
-                <Card.Body>
+                return (
+                <Col key={jobs.jobsId} md="4" style={{ paddingRight: "40px", paddingBottom: "40px" }}>
+                    <Card key={jobs.jobsId} border='dark' >
+                
+                    <Card.Body>
 
-                    <Card.Title>{jobs.title}</Card.Title>
-                    <p className='small'>Recruiter: {jobs.recruiterName}</p>
-                    <p className='small'>Agency: {jobs.agency}</p>
-                    <Card.Text>{jobs.description}</Card.Text>
+                        <Card.Title>{jobs.title}</Card.Title>
+                        <p className='small'>Recruiter: {jobs.recruiterName}</p>
+                        <p className='small'>Agency: {jobs.agency}</p>
+                        <Card.Text>{jobs.description}</Card.Text>
 
-                    {/* {Auth.loggedIn() && ( */}
-                    <Button
-                        // disabled={savedjobsIds?.some((savedjobsId) => savedjobsId === jobs.jobsId)}
-                        className='btn-block btn-info'
-                        onClick={() => handleSaveJobs(jobs.jobsId)}>
-                        {searchedJobsData?.some((savedjobsId) => savedjobsId === jobs.jobsId)
-                        ? 'This jobs has already been saved!'
-                        : 'Favorite this job'}
-                    </Button>
+                        {/* {Auth.loggedIn() && ( */}
+                        <Button
+                            // disabled={savedjobsIds?.some((savedjobsId) => savedjobsId === jobs.jobsId)}
+                            className='btn-block btn-info'
+                            onClick={() => handleSaveJobs(jobs.jobsId)}>
+                            {searchedJobsData?.some((savedjobsId) => savedjobsId === jobs.jobsId)
+                            ? 'This jobs has already been saved!'
+                            : 'Favorite this job'}
+                        </Button>
 
-                   {/* )}  */} 
-                </Card.Body>
-                </Card>
-            </Col>
-            );
+                    {/* )}  */} 
+                    </Card.Body>
+                    </Card>
+                </Col>
+                );
         })}
         </Row>
         </Container>
