@@ -3,6 +3,7 @@
 // import { Container } from 'react-bootstrap';
 
 import React, { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/client';
 import {
   Container,
   Col,
@@ -12,17 +13,56 @@ import {
   Row
 } from 'react-bootstrap';
 import searchedJobsData from '../placeholders/searchedJobsData';
-// import Auth from '../utils/auth';
+// import { saveJobsIds, getSavedJobsIds } from '../utils/localStorage';
+
+import Auth from '../utils/auth';
 
 
-function JobsPage() {
+const JobsPage = () => {
+  // TODO: create state to hold saved JobsId values
+//   const [savedJobsIds, setSavedJobsIds] = useState(getSavedJobsIds());
+//   const [saveJobs] = useMutation(SAVE_JOBS);
+
+const handleSaveJobs = async (jobsId) => {
+    /***** 
+    // find the jobs in `searchedjobss` state by the matching id
+    const jobsToSave = searchedJobsData.find((jobs) => jobs.jobsId === jobsId);
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+      
+    }
+    
+
+    try {
+      const response = await saveJobs({
+        variables: { ...jobsToSave },
+      });
+      
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      // ++ if jobs successfully saves to user's account, save jobs id to state
+    //   setSavedjobsIds([...savedjobsIds, jobsToSave.jobsId]);
+
+    } catch (err) {
+      console.error(err);
+    }
+    */
+  };
+
+
     return (
         <>
         <Container>
             <h1> Jobs Page</h1> 
-
+        
         </Container>
-
+        
         <Container>
         <h2 className='pt-5'>
         {/* {searchedjobss.length
@@ -43,17 +83,17 @@ function JobsPage() {
                     <p className='small'>Agency: {jobs.agency}</p>
                     <Card.Text>{jobs.description}</Card.Text>
 
-                    {/* {Auth.loggedIn() && (
+                    {/* {Auth.loggedIn() && ( */}
                     <Button
-                        disabled={savedjobsIds?.some((savedjobsId) => savedjobsId === jobs.jobsId)}
+                        // disabled={savedjobsIds?.some((savedjobsId) => savedjobsId === jobs.jobsId)}
                         className='btn-block btn-info'
-                        onClick={() => handleSavejobs(jobs.jobsId)}>
-                        {savedjobsIds?.some((savedjobsId) => savedjobsId === jobs.jobsId)
+                        onClick={() => handleSaveJobs(jobs.jobsId)}>
+                        {searchedJobsData?.some((savedjobsId) => savedjobsId === jobs.jobsId)
                         ? 'This jobs has already been saved!'
-                        : 'Save this jobs!'}
+                        : 'Favorite this job'}
                     </Button>
 
-                    )} */}
+                   {/* )}  */} 
                 </Card.Body>
                 </Card>
             </Col>
@@ -64,6 +104,7 @@ function JobsPage() {
         </>
         
     );
-}
 
+
+};
 export default JobsPage;
