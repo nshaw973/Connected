@@ -2,10 +2,11 @@ import React from 'react';
 
 
 
-function Candidate({ title, image, deployedLink, githubLink }) {
+function Candidate({ title, name, image, deployedLink, githubLink }) {
   return (
     <div className="Candidate">
-      <h3>{title}</h3>
+      <h2>{name}</h2>
+      <h4>{title}</h4>
       <img src={image} alt={title} />
       <div className="Candidate-links">
         <a href={deployedLink} target="_blank" rel="noopener noreferrer">

@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/Homepage';
 import CandidatePage from './pages/CandidatePage';
+import RecruiterDashPage from './pages/RecruiterDashPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/jobs" element={<JobsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/candidate" element={<CandidatePage />} />
+            <Route path="/recruiterdashboard" element={<RecruiterDashPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
