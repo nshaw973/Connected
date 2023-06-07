@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
 const Navbar = ({ currentPage, handlePageChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,7 +11,10 @@ const Navbar = ({ currentPage, handlePageChange }) => {
     // Reset the search term
     setSearchTerm('');
   };
-
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +25,6 @@ const Navbar = ({ currentPage, handlePageChange }) => {
               <div className="ml-10 flex items-baseline space-x-4">
                 <a
                   href="/"
-                  // onClick={() => handlePageChange('MainPage')}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
@@ -28,16 +32,17 @@ const Navbar = ({ currentPage, handlePageChange }) => {
 
                 <a
                   href="/jobs"
-                  // onClick={() => handlePageChange('MainPage')}
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Find a Job
                 </a>
               </div>
-              
             </div>
           </div>
-          <form onSubmit={handleSearch} className="relative md:ml-4 w-full sm:w-auto">
+          <form
+            onSubmit={handleSearch}
+            className="relative md:ml-4 w-full sm:w-auto"
+          >
             <input
               type="text"
               value={searchTerm}
@@ -67,20 +72,34 @@ const Navbar = ({ currentPage, handlePageChange }) => {
           </form>
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
-              <a
-                href="/signup"
-                // onClick={() => handlePageChange('Signup')}
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Sign Up
-              </a>
-              <a
-                href="/login"
-                // onClick={() => handlePageChange('Login')}
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Login
-              </a>
+              {Auth.loggedIn() ? (
+                <>
+                  <Link
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    to="/profile"
+                  >
+                    Portal
+                  </Link>
+                  <button className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" onClick={logout}>
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <a
+                    href="/signup"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Sign Up
+                  </a>
+                  <a
+                    href="/login"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Login
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
