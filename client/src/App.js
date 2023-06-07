@@ -16,7 +16,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
 //Pages
-import Login from './pages/Login'
+import Login from './pages/Login';
 import Signup from './pages/Signup';
 // Styling
 import './index.css';
@@ -46,15 +46,18 @@ const App = () => {
       <div className="xapp flex flex-col min-h-screen">
         <Router>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/jobs" element={<JobsPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/candidate" element={<CandidatePage />} />
-            <Route path="/recruiterdashboard" element={<RecruiterDashPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </Routes>
+          <div className="max-w-lg mx-auto flex justify-center items-center flex-col flex-grow">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/jobs" element={<JobsPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/candidate" element={<CandidatePage />} />
+              <Route path="/myportal" element={<RecruiterDashPage />} />
+              <Route path="/recruiter/:username" element={<RecruiterDashPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </div>
           <Footer />
         </Router>
       </div>
