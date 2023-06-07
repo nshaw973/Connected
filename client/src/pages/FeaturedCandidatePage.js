@@ -7,10 +7,13 @@ import { Container, Row, Col, Card } from 'react-bootstrap'
 
 // import './App.css';
 
-function CandidatePage() {
+function FeaturedCandidatePage() {
       return (
         <div className="Candidatebackground">
         <h1>Featured Candidates</h1>
+        <br/>
+        <br/>
+        <br/>
         <div className="Candidate-list"> 
           {candidateData.map((Candidates, index) => (
           <Col key={Candidates.jobsId} style={{ paddingLeft: "40px",paddingRight: "40px", paddingBottom: "40px" }}>
@@ -46,7 +49,7 @@ function CandidatePage() {
   }
 
 
-  export default CandidatePage;
+  export default FeaturedCandidatePage;
 
   
 

@@ -24,6 +24,12 @@ const Footer = () => {
             Jobs
           </a>
           <a
+            href="/featured-candidates"
+            className="text-gray-300 hover:text-white transition-colors duration-300"
+          >
+            Featured Candidates
+          </a>
+          <a
             href="/contact"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >

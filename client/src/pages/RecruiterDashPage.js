@@ -6,7 +6,9 @@ import { Container, Row, Col, Card } from 'react-bootstrap'
 // import '../styles/style.css';
 
 // import './App.css';
-import CandidatePage from './CandidatePage';
+import CandidatesCommitted from '../components/CandidatesCommitted';
+import CandidatesSubmitted from '../components/CandidatesSubmitted';
+import CandidatesPlaced from '../components/CandidatesPlaced';
 
 function RecruiterDashPage() {
     return (
@@ -19,10 +21,15 @@ function RecruiterDashPage() {
       <br/>
 
       <h3>Candidates Applied</h3>
-      {/* <CandidatePage /> */}
+      <CandidatesCommitted />
       <br/>
 
       <h3>Candidates Submitted to Partners</h3>
+      <CandidatesSubmitted  />
+      <br/>
+
+      <h3>Candidates Placed</h3>
+      <CandidatesPlaced  />
       <br/>
 
 
