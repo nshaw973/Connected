@@ -1,6 +1,10 @@
 // Insert Models
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+const Developer = require('../models/Developer');
+const Recruiter = require('../models/Recruiter');
+const Job = require('../models/Jobs');
+const Project = require('../models/Project');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -14,6 +18,22 @@ const resolvers = {
       }
       throw new AuthenticationError('Error, you need to be logged in!');
     },
+    getDeveloperById: async (parent, { id }, context) => {
+      const developer = await Developer.findById(id);
+      return developer;
+    },
+    getRecruiterById: async (parent, { id }, context) => {
+      const recruiter = await Recruiter.findById(id);
+      return recruiter;
+    },
+    getJobById: async (parent, { id }, context) => {
+      const job = await Job.findById(id);
+      return job;
+    },
+    getProjectById: async (parent, { id }, context) => {
+      const project = await Project.findById(id);
+      return project;
+    },
   },
 
   Mutation: {
@@ -21,6 +41,36 @@ const resolvers = {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
+    },
+    createDeveloper: async (parent, { githubUrl }, context) => {
+      const developer = await Developer.create({
+        githubUrl
+      });
+      return developer;
+    },
+    createRecruiter: async (parent, { company }, context) => {
+      const recruiter = await Recruiter.create({
+        company,
+      });
+      return recruiter;
+    },
+    createJob: async (parent, { title, description, salary }, context) => {
+      const job = await Job.create({
+        title,
+        description,
+        salary,
+      });
+      return job;
+    },
+    createProject: async (parent, { projectName, githubLink, deploymentLink, description, img }, context) => {
+      const project = await Project.create({
+        projectName,
+        githubLink,
+        deploymentLink,
+        description,
+        img,
+      });
+      return project;
     },
   },
 };
