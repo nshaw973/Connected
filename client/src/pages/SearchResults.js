@@ -24,40 +24,94 @@ export default function SearchResults() {
       title: "backend-developer",
       company: "dudette inc",
     },
+    {
+      firstName: "Anthony",
+      lastName: "Vaquer",
+      company: "Robert Half",
+      email: "anthonyv@roberthalf.com",
+    },
+    {
+      firstName: "Art",
+      lastName: "Vandelay",
+      githubUrl: "github.com/artvandelay",
+      email: "art@bootcampspot.com",
+      skills: "full stack dev",
+    }
   ];
 
-  function filterSearch() { 
-    // TODO - add Regex for jr/sr/dev/developer/any other common searchs that come to mind
+  // TODO - add virtuals for recruiter and dev
+  
+  function filterSearch() {
+// TODO - add regex for dev/developer, jr, junior, sr, senior, etc and any other common search entries
     const searchWords = word.split(" ").filter(Boolean);
     const regexes = searchWords.map((word) => {
-      const regexPattern = word.replace(
+      const regexFormula = word.replace(
         /\b(jr|sr)\b/gi,
         "(jr|sr|junior|senior)"
       );
-      return new RegExp(regexPattern, "i");
+      return new RegExp(regexFormula, "i");
     });
+
     const data = databaseSample.filter((item) =>
-      regexes.some((regex) => regex.test(item.title))
+      regexes.some((regex) => {
+        const searchableFields = ['title', 'firstName', 'lastName'];
+        return searchableFields.some((field) => regex.test(item[field]));
+      })
     );
 
     return data.length > 0 ? (
-      data.map((content, index) => (
-        <Card
-          style={{ width: "18rem", marginBottom: "10px", marginTop: "10px" }}
-          key={index}
-        >
-          <Card.Body>
-            <Card.Title>{content.title}</Card.Title>
-            <Card.Text>Company: {content.company}</Card.Text>
-            <Card.Text>Description: {content.description}</Card.Text>
-            <Card.Text>Salary: {content.salary}</Card.Text>
-            <Card.Text>
-              Number of Applicants: {content.applicantNumber}
-            </Card.Text>
-            <Button variant="primary">View</Button>
-          </Card.Body>
-        </Card>
-      ))
+      data.map((content, index) => {
+        if (content.title) {
+          return (
+            <Card
+              style={{ width: "18rem", marginBottom: "10px", marginTop: "10px" }}
+              key={index}
+            >
+              <Card.Body>
+                <Card.Title>{content.title}</Card.Title>
+                <Card.Text>Company: {content.company}</Card.Text>
+                <Card.Text>Description: {content.description}</Card.Text>
+                <Card.Text>Salary: {content.salary}</Card.Text>
+                <Card.Text>
+                  Number of Applicants: {content.applicantNumber}
+                </Card.Text>
+                <Button variant="primary">View</Button>
+              </Card.Body>
+            </Card>
+          );
+        } else if (content.firstName && content.lastName && content.company) {
+          return (
+            <Card
+              style={{ width: "18rem", marginBottom: "10px", marginTop: "10px" }}
+              key={index}
+            >
+              <Card.Body>
+                <Card.Title>{content.firstName} {content.lastName}</Card.Title>
+                <Card.Text>Company: {content.company}</Card.Text>
+                <Card.Text>Email: {content.email}</Card.Text>
+                <Button variant="primary">View</Button>
+              </Card.Body>
+            </Card>
+          );
+        } else if (content.skills) {
+          return (
+            <Card
+              style={{ width: "18rem", marginBottom: "10px", marginTop: "10px" }}
+              key={index}
+            >
+              <Card.Body>
+                <Card.Title>{content.firstName} {content.lastName}</Card.Title>
+                <Card.Text>GitHub: {content.githubUrl}</Card.Text>
+                <Card.Text>Email: {content.email}</Card.Text>
+                <Card.Text>Skills: {content.skills}</Card.Text>
+                <Button variant="primary">View</Button>
+              </Card.Body>
+            </Card>
+          );
+        } else {
+          return null;
+        }
+      })
     ) : (
       <h1>No search results found</h1>
     );
