@@ -10,12 +10,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/Homepage';
-import CandidatePage from './pages/CandidatePage';
+import FeaturedCandidatePage from './pages/FeaturedCandidatePage';
+import CandidatesDashPage from './pages/CandidatesDashPage';
+import RecruiterDashPage from './pages/RecruiterDashPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
+import PageNotFound from './pages/PageNotFound';
 //Pages
-import Login from './pages/Login'
+import Login from './pages/Login';
 import Signup from './pages/Signup';
 // Styling
 import './index.css';
@@ -45,14 +48,21 @@ const App = () => {
       <div className="xapp flex flex-col min-h-screen">
         <Router>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/jobs" element={<JobsPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/candidate" element={<CandidatePage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </Routes>
+          <div className="max-w-lg mx-auto flex justify-center items-center flex-col flex-grow">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/jobs" element={<JobsPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/myportal" element={<RecruiterDashPage />} />
+              <Route path="/recruiter/:username" element={<RecruiterDashPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+                <Route path="/featured-candidates" element={<FeaturedCandidatePage />} />
+                <Route path="/candidates-dashboard" element={<CandidatesDashPage />} />
+                <Route path="*" element={<PageNotFound />} />
+            </Routes>
+
+          </div>
           <Footer />
         </Router>
       </div>
