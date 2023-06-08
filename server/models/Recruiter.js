@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const User = require('./User');
-const Job = require('./Jobs');
+const jobSchema = require('./Job');
 
 const recruiterSchema = new Schema({
     user: {
@@ -12,18 +12,17 @@ const recruiterSchema = new Schema({
       required: true,
       maxLength: 50,
     },
-    jobs: {
-      type: [String],
-      ref: 'Job'
-    },
+    jobs: [jobSchema],
     desiredRoles: {
       type: [String],
       default: [],
     },
-    companies: {
-      type: [String],
-      default: [],
+  },
+  {
+    toJSON: {
+      virtuals: true,
     },
+    id: false,
   });
  
 module.exports = recruiterSchema

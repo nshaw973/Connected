@@ -24,6 +24,12 @@ const developerSchema = new Schema({
       ref: "User",
     },
   ],
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
+  id: false,
 });
 
 module.exports = developerSchema;

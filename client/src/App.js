@@ -17,6 +17,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
 import PageNotFound from './pages/PageNotFound';
+import SearchResults from './pages/SearchResults';
 //Pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -57,6 +58,7 @@ const App = () => {
               <Route path="/recruiter/:username" element={<RecruiterDashPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/search/:word" element={<SearchResults />} />
                 <Route path="/featured-candidates" element={<FeaturedCandidatePage />} />
                 <Route path="/candidates-dashboard" element={<CandidatesDashPage />} />
                 <Route path="*" element={<PageNotFound />} />
