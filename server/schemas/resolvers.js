@@ -155,7 +155,7 @@ const resolvers = {
   },
 
   Query: {
-    searchJobsByTitle: async (parent, { searchTerm }, context) => {
+/*     searchJobsByTitle: async (parent, { searchTerm }, context) => {
       const jobs = await Job.searchByTitle(searchTerm);
       return jobs;
     },
@@ -163,7 +163,7 @@ const resolvers = {
     searchJobsBySalary: async (parent, { minSalary, maxSalary }, context) => {
       const jobs = await Job.searchBySalary(minSalary, maxSalary);
       return jobs;
-    }
+    } */
   }
 };
 

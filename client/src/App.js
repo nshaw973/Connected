@@ -51,14 +51,14 @@ const App = () => {
       <div className="xapp flex flex-col min-h-screen">
         <Router>
           <Navbar />
-          {/* <div className="flex justify-center items-center flex-col flex-grow"> */}
-          <div className="cmpContainer">
+          <div className="flex justify-center items-center flex-col flex-grow cmpContainer">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/jobs" element={<JobsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/myportal" element={<RecruiterDashPage />} />
               <Route path="/recruiter/:username" element={<RecruiterDashPage />} />
+              <Route path="/donate" element={<Donate />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
             </Routes>

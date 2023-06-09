@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const projectSchema = require('./Project').schema;
-const jobSchema = require('./Jobs').schema;
+const jobSchema = require('./Job').schema;
 
 const developerSchema = new Schema({
   user: {
