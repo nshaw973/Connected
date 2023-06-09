@@ -8,6 +8,7 @@ const Navbar = ({ currentPage, handlePageChange }) => {
     event.preventDefault();
     // Perform search logic with the search term
     console.log('Search term:', searchTerm);
+    window.location.replace(`/search/${searchTerm}`)
     // Reset the search term
     setSearchTerm('');
   };
@@ -34,7 +35,14 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                   href="/jobs"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Find a Job
+                  Find Jobs
+                </a>
+                <a
+                  href="/featured-candidates"
+                  // onClick={() => handlePageChange('MainPage')}
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Find Candidates 
                 </a>
               </div>
             </div>
@@ -50,6 +58,7 @@ const Navbar = ({ currentPage, handlePageChange }) => {
               className="bg-gray-900 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Search..."
             />
+            
             <button
               type="submit"
               className="absolute right-0 top-0 h-full px-4 text-gray-300 hover:bg-gray-700"
@@ -69,6 +78,7 @@ const Navbar = ({ currentPage, handlePageChange }) => {
                 />
               </svg>
             </button>
+           
           </form>
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">

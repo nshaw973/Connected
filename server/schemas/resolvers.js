@@ -1,4 +1,3 @@
-// Insert Models
 const { AuthenticationError } = require('apollo-server-express');
 const {
   User,
@@ -154,6 +153,18 @@ const resolvers = {
       return project;
     },
   },
+
+  Query: {
+    searchJobsByTitle: async (parent, { searchTerm }, context) => {
+      const jobs = await Job.searchByTitle(searchTerm);
+      return jobs;
+    },
+
+    searchJobsBySalary: async (parent, { minSalary, maxSalary }, context) => {
+      const jobs = await Job.searchBySalary(minSalary, maxSalary);
+      return jobs;
+    }
+  }
 };
 
 module.exports = resolvers;

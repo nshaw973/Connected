@@ -31,6 +31,12 @@ const projectSchema = new Schema({
         required: false,
         maxLength: 150,
       },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
   });
 
   const Project = model('Project', projectSchema);

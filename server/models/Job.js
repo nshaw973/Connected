@@ -10,6 +10,11 @@ const jobSchema = new Schema({
     required: true,
     maxLength: 50,
   },
+  company: {
+    type: String,
+    required: true,
+    maxLength: 30,
+  },
   description: {
     type: String,
     required: true,
@@ -23,6 +28,17 @@ const jobSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   }],
+},
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
+);
+
+jobSchema.virtual('applicantCount').get(function () {
+  return this.applicants.length;
 });
 
 const Job = model('Job', jobSchema);

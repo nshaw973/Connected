@@ -7,7 +7,10 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
-import CandidatePage from './CandidatePage';
+import CandidatesCommitted from '../components/CandidatesCommitted';
+import CandidatesSubmitted from '../components/CandidatesSubmitted';
+import CandidatesPlaced from '../components/CandidatesPlaced';
+import JobCard from '../components/JobCard';
 
 function RecruiterDashPage() {
   const { username: userParam } = useParams();
@@ -40,15 +43,23 @@ function RecruiterDashPage() {
 
       <h3>My Job Postings</h3>
       <br />
-
+      <JobCard />
+      
       <h3>Candidates Applied</h3>
-      {/* <CandidatePage /> */}
-      <br />
+      <CandidatesCommitted />
+      <br/>
 
       <h3>Candidates Submitted to Partners</h3>
-      <br />
-    </>
-  );
-}
+      <CandidatesSubmitted  />
+      <br/>
+
+      <h3>Candidates Placed</h3>
+      <CandidatesPlaced  />
+      <br/>
+
+
+      </>
+    );
+  }
 
 export default RecruiterDashPage;
