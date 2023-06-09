@@ -9,7 +9,7 @@ const searchedJobsData = [
     {
         title: 'Back End Dev Opportunity',
         recruiterName: 'Jane Doe',
-        agency: 'Creative Staffing',
+        agency: 'Robert Half',
         deployedLink: '/',
         description: 'Backend developer responsibilities include creating, maintaining, testing, and debugging the entire back end of an application or system. This includes the core application logic, databases, data and application integration, API, and other processes taking place behind the scenes.',
     },
