@@ -35,6 +35,10 @@ const userSchema = new Schema({
     required: true,
     maxLength: 30,
   },
+  recruiter: {
+    type: Boolean,
+    required: true
+  }
   // role: {
   //   type: String,
   //   required: true,

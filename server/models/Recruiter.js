@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const User = require('./User');
-const jobSchema = require('./Job');
+const Job = require('./Job');
 
 const recruiterSchema = new Schema({
     user: {
@@ -12,7 +12,11 @@ const recruiterSchema = new Schema({
       required: true,
       maxLength: 50,
     },
-    jobs: [jobSchema],
+    jobs: {
+      type: [String],
+      ref: 'Job'
+
+    },
     desiredRoles: {
       type: String,
       default: [],

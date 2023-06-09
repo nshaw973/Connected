@@ -1,10 +1,14 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const Developer = require('../models/Developer');
-const Recruiter = require('../models/Recruiter');
-const Job = require('../models/Job');
-const Project = require('../models/Project');
+const {
+  User,
+  Job,
+  Developer,
+  Recruiter,
+  Project,
+  Donation,
+} = require('../models');
 const { signToken } = require('../utils/auth');
+const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 const resolvers = {
   Query: {
@@ -38,7 +42,7 @@ const resolvers = {
   Mutation: {
     addUser: async (
       parent,
-      { firstName, lastName, username, email, password }
+      { firstName, lastName, username, email, password, recruiter }
     ) => {
       const user = await User.create({
         firstName,
@@ -46,6 +50,7 @@ const resolvers = {
         username,
         email,
         password,
+        recruiter,
       });
       const token = signToken(user);
       return { token, user };
@@ -69,9 +74,53 @@ const resolvers = {
       return { token, user };
     },
 
+    createCheckoutSession: async (parent, { amount }, context) => {
+      try {
+        const url = new URL(context.headers.referer).origin;
+        const id = context.user._id;
+        // Create a new Stripe Checkout session
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          line_items: [
+            {
+              price_data: {
+                currency: 'usd',
+                product_data: {
+                  name: 'Donation',
+                },
+                unit_amount: amount,
+              },
+              quantity: 1,
+            },
+          ],
+          mode: 'payment',
+          success_url: `${url}/success`, // Redirect URL after successful payment
+          cancel_url: `${url}/cancel`, // Redirect URL after canceled payment
+        });
+        // Fetch the donor details from the User model
+        const donor = await User.findById(id);
+        if (!donor) {
+          throw new Error('Donor not found');
+        }
+
+        // Store the donation details in MongoDB
+        const donation = new Donation({
+          amount,
+          status: 'pending',
+          donor: donor._id,
+        });
+        await donation.save();
+        console.log(donation);
+        return session.id;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to create checkout session');
+      }
+    },
+
     createDeveloper: async (parent, { githubUrl }, context) => {
       const developer = await Developer.create({
-        githubUrl
+        githubUrl,
       });
       return developer;
     },
@@ -89,7 +138,11 @@ const resolvers = {
       });
       return job;
     },
-    createProject: async (parent, { projectName, githubLink, deploymentLink, description, img }, context) => {
+    createProject: async (
+      parent,
+      { projectName, githubLink, deploymentLink, description, img },
+      context
+    ) => {
       const project = await Project.create({
         projectName,
         githubLink,
@@ -102,7 +155,7 @@ const resolvers = {
   },
 
   Query: {
-    searchJobsByTitle: async (parent, { searchTerm }, context) => {
+/*     searchJobsByTitle: async (parent, { searchTerm }, context) => {
       const jobs = await Job.searchByTitle(searchTerm);
       return jobs;
     },
@@ -110,7 +163,7 @@ const resolvers = {
     searchJobsBySalary: async (parent, { minSalary, maxSalary }, context) => {
       const jobs = await Job.searchBySalary(minSalary, maxSalary);
       return jobs;
-    }
+    } */
   }
 };
 

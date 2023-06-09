@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -41,6 +42,12 @@ const Footer = () => {
           >
             Privacy Policy
           </a>
+          <Link
+            to="/donate"
+            className="text-gray-300 hover:text-white transition-colors duration-300"
+          >
+            Donate
+          </Link>
         </div>
         <div className="mt-8 flex justify-center space-x-6">
           <a
