@@ -48,7 +48,8 @@ const App = () => {
       <div className="xapp flex flex-col min-h-screen">
         <Router>
           <Navbar />
-          <div className="max-w-lg mx-auto flex justify-center items-center flex-col flex-grow">
+          {/* <div className="flex justify-center items-center flex-col flex-grow"> */}
+          <div className="cmpContainer">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/jobs" element={<JobsPage />} />

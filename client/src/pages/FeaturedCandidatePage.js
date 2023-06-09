@@ -3,7 +3,7 @@ import Candidate from '../components/Candidate';
 import candidateData from '../placeholders/candidateData';
 import { Container, Row, Col, Card } from 'react-bootstrap'
 
-// import '../styles/style.css';
+import '../styles/styles.css';
 
 // import './App.css';
 
@@ -14,31 +14,18 @@ function FeaturedCandidatePage() {
         <br/>
         <br/>
         <br/>
-        <div className="Candidate-list"> 
+        <div className="Candidate-list row"> 
           {candidateData.map((Candidates, index) => (
-          <Col key={Candidates.jobsId} style={{ paddingLeft: "40px",paddingRight: "40px", paddingBottom: "40px" }}>
-             <Card key={Candidate.jobsId} border='dark' >
-              <Container fluid className="Candidate-section">
-                <Container>
-                  <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
-                    <div className="textbackground row"> 
-    
-                      <Col md={4} className="Candidate-card">
-                      <Candidate
-                        key={index}
-                        name={Candidates.name}
-                        title={Candidates.title}
-                        image={Candidates.image}
-                        deployedLink={Candidates.deployedLink}
-                        githubLink={Candidates.githubLink}
-                      />
-                      </Col>
-                    </div>
-                    <br/>
-                    <br/>
-                  </Row>
-                </Container>
-              </Container>
+          <Col key={Candidates.jobsId} class={`col-md-3`}>
+             <Card key={Candidate.jobsId}  >
+             <Candidate
+                key={index}
+                name={Candidates.name}
+                title={Candidates.title}
+                image={Candidates.image}
+                deployedLink={Candidates.deployedLink}
+                githubLink={Candidates.githubLink}
+              />
             </Card>
           </Col>  
 
@@ -50,10 +37,6 @@ function FeaturedCandidatePage() {
 
 
   export default FeaturedCandidatePage;
-
-  
-
-
 
 
 
