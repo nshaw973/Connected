@@ -1,5 +1,5 @@
 import React from 'react';
-// import '../styles/style.css';
+import '../styles/style.css';
 import { Container } from 'react-bootstrap';
 
 function HomePage() {
@@ -30,7 +30,7 @@ function HomePage() {
           </button>
           <span></span>
           <p className="copyright">
-            <hr />
+            <br />
 
 
           </p>

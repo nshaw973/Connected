@@ -3,7 +3,7 @@ import Candidate from '../components/Candidate';
 import candidateData from '../placeholders/candidateData';
 import { Container, Row, Col, Card } from 'react-bootstrap'
 
-import '../styles/styles.css';
+import '../styles/style.css';
 
 // import './App.css';
 
