@@ -18,7 +18,7 @@ const recruiterSchema = new Schema({
 
     },
     desiredRoles: {
-      type: [String],
+      type: String,
       default: [],
     },
   },
