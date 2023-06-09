@@ -38,29 +38,29 @@ export default function SearchResults() {
       skills: "full stack dev",
     }
   ];
-
-  // TODO - add virtuals for recruiter and dev
-  
+// TODO - create virtuals for dev/recruiter
+// TODO - add regex for jr, sr, junior, senior, dev, development, any other common searches
   function filterSearch() {
-// TODO - add regex for dev/developer, jr, junior, sr, senior, etc and any other common search entries
+    // takes string and splits it into separate words, removes spaces/blanks
     const searchWords = word.split(" ").filter(Boolean);
+    // regex to match variations of jr, sr, senior, junior
     const regexes = searchWords.map((word) => {
       const regexFormula = word.replace(
-        /\b(jr|sr)\b/gi,
-        "(jr|sr|junior|senior)"
+        /\b(jr|sr|junior|senior|developer|dev)\b/gi,
+        "(jr|sr|junior|senior|developer|dev)"
       );
       return new RegExp(regexFormula, "i");
     });
 
     const data = databaseSample.filter((item) =>
       regexes.some((regex) => {
-        const searchableFields = ['title', 'firstName', 'lastName'];
+        const searchableFields = ['title', 'firstName', 'lastName', 'company'];
         return searchableFields.some((field) => regex.test(item[field]));
       })
     );
 
-    return data.length > 0 ? (
-      data.map((content, index) => {
+    if (data.length > 0) {
+      return data.map((content, index) => {
         if (content.title) {
           return (
             <Card
@@ -111,10 +111,10 @@ export default function SearchResults() {
         } else {
           return null;
         }
-      })
-    ) : (
-      <h1>No search results found</h1>
-    );
+      });
+    } else {
+      return <h1>No search results found</h1>;
+    }
   }
 
   return <>{filterSearch()}</>;
