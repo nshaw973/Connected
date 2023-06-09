@@ -10,6 +10,7 @@ import Auth from '../utils/auth';
 import CandidatesCommitted from '../components/CandidatesCommitted';
 import CandidatesSubmitted from '../components/CandidatesSubmitted';
 import CandidatesPlaced from '../components/CandidatesPlaced';
+import JobCard from '../components/JobCard';
 
 function RecruiterDashPage() {
   const { username: userParam } = useParams();
@@ -43,7 +44,8 @@ function RecruiterDashPage() {
 
       <h3>My Job Postings</h3>
       <br />
-
+      <JobCard />
+      
       <h3>Candidates Applied</h3>
       <CandidatesCommitted />
       <br/>

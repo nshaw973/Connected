@@ -7,18 +7,13 @@ function CandidatesCommitted() {
   // Filter the candidateData array to only include committed candidates
   const committedCandidates = candidateData.filter(candidate => candidate.isCommitted);
 
+  
   return (
     <div className="Candidatebackground">
-      <div className="Candidate-list">
+      <div className="Candidate-list row">
         {committedCandidates.map((candidate, index) => (
-          <Col key={candidate.jobsId} style={{ paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px" }}>
-            <Card key={candidate.jobsId} border='dark'>
-              <Container fluid className="Candidate-section">
-                <Container>
-                  <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
-                    <div className="textbackground row">
-
-                      <Col md={4} className="Candidate-card">
+          <Col md={3} className="Candidate-card">
+                <Card key={candidate.jobsId} md={3} >
                         <Candidate
                           key={index}
                           name={candidate.name}
@@ -27,14 +22,7 @@ function CandidatesCommitted() {
                           deployedLink={candidate.deployedLink}
                           githubLink={candidate.githubLink}
                         />
-                      </Col>
-                    </div>
-                    <br />
-                    <br />
-                  </Row>
-                </Container>
-              </Container>
-            </Card>
+                 </Card>
           </Col>
         ))}
       </div>
