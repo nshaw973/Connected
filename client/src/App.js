@@ -15,6 +15,8 @@ import RecruiterDashPage from './pages/RecruiterDashPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
+import Success from './pages/Success'
+import Donate from './pages/DonationPage'
 //Pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -56,6 +58,8 @@ const App = () => {
               <Route path="/recruiter/:username" element={<RecruiterDashPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/donate" element={<Donate />} />
             </Routes>
           </div>
           <Footer />

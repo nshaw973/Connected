@@ -8,6 +8,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    recruiter: Boolean
   }
 
   type Auth {
@@ -36,28 +37,33 @@ const typeDefs = gql`
     description: String!
     img: String!
   }
+
+  type Donation {
+    id: ID!
+    amount: Int!
+    status: String!
+    donor: User!
+  }
+
+  type Checkout {
+    session: ID
+  }
+
   type Query {
     user(username: String!): User
     me: User
-  }
-  type Query {
+    donation(_id: ID, donationAmount: Float): Donation
+    checkout(donation: ID!): Checkout
     getDeveloperById(id: ID!): Developer
-  }
-  type Query {
     getRecruiterById(id: ID!): Recruiter
-  }
-  type Query {
     getJobById(id: ID!): Job
-  }
-  type Query {
     getProjectById (id: ID!): Project
   }
-  
-  
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, recruiter: Boolean!): Auth
     login(email: String!, password: String!): Auth
+    createCheckoutSession(amount: Int!, donorId: ID): String!
     createDeveloper(githubUrl: String!): Developer!
     createRecruiter(company: String!): Recruiter!
     createJob(title: String!, description: String!, salary: Float!): Job!
