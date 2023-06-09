@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+// import userSchema from "../server/models/User";
+// import developerSchema from "../server/models/Developer";
+// import recruiterSchema from "../server/models/Recruiter";
+// import jobSchema from "../server/models/Job";
 
 export default function SearchResults() {
   const { word } = useParams();
@@ -25,10 +29,10 @@ export default function SearchResults() {
       company: "dudette inc",
     },
     {
-      firstName: "Anthony",
-      lastName: "Vaquer",
+      firstName: "J",
+      lastName: "Peterman",
       company: "Robert Half",
-      email: "anthonyv@roberthalf.com",
+      email: "JPeterman@roberthalf.com",
     },
     {
       firstName: "Art",
@@ -41,21 +45,30 @@ export default function SearchResults() {
 // TODO - create virtuals for dev/recruiter
 // TODO - add regex for jr, sr, junior, senior, dev, development, any other common searches
   function filterSearch() {
-    // takes string and splits it into separate words, removes spaces/blanks
+    // takes string and splits it into separate words, removes spaces/blanks w/ filter(boolean)
     const searchWords = word.split(" ").filter(Boolean);
     // regex to match variations of jr, sr, senior, junior
     const regexes = searchWords.map((word) => {
-      const regexFormula = word.replace(
-        /\b(jr|sr|junior|senior|developer|dev)\b/gi,
-        "(jr|sr|junior|senior|developer|dev)"
-      );
+      var regexFormula;
+      if (word === "jr" || word === "junior") {
+        regexFormula = "(jr|junior)";
+      } else if (word === "sr" || word === "senior") {
+        regexFormula = "(sr|senior)";
+      } else if (word === "dev" || word === "developer") {
+        regexFormula = "(dev|developer)";
+      } else {
+        regexFormula = word;
+      }
+      // Makes the search case-insensitive
       return new RegExp(regexFormula, "i");
     });
 
+    
+
     const data = databaseSample.filter((item) =>
       regexes.some((regex) => {
-        const searchableFields = ['title', 'firstName', 'lastName', 'company'];
-        return searchableFields.some((field) => regex.test(item[field]));
+        const searchFields = ['title', 'firstName', 'lastName', 'company'];
+        return searchFields.some((field) => regex.test(item[field]));
       })
     );
 
@@ -79,7 +92,7 @@ export default function SearchResults() {
               </Card.Body>
             </Card>
           );
-        } else if (content.firstName && content.lastName && content.company) {
+        } else if (content.company) {
           return (
             <Card
               style={{ width: "18rem", marginBottom: "10px", marginTop: "10px" }}
@@ -93,7 +106,7 @@ export default function SearchResults() {
               </Card.Body>
             </Card>
           );
-        } else if (content.skills) {
+        } else if (content.githubUrl) {
           return (
             <Card
               style={{ width: "18rem", marginBottom: "10px", marginTop: "10px" }}
