@@ -1,17 +1,18 @@
 const { Schema, model } = require('mongoose');
 const projectSchema = require('./Project').schema;
 const jobSchema = require('./Jobs').schema;
+const userSchema = require('./User')
 
 const developerSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
+  user: [User.schema],
   projects: [{
     type: Schema.Types.ObjectId,
     ref: 'Project',
   }],
   githubUrl: {
+    type: String,
+  },
+  skills: {
     type: String,
   },
   jobsAppliedTo: {
@@ -31,5 +32,7 @@ const developerSchema = new Schema({
   },
   id: false,
 });
+
+const Developer = model('Developer', developerSchema);
 
 module.exports = developerSchema;
