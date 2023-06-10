@@ -2,7 +2,6 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 // import Candidate from '../components/Candidate';
 // import candidateData from '../placeholders/candidateData';
-import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -20,6 +19,7 @@ function RecruiterDashPage() {
   });
 
   const user = data?.me || data?.user || {};
+  console.log(user)
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/myportal" />;
   }

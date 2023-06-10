@@ -3,7 +3,7 @@ const projectSchema = require('./Project').schema;
 const jobSchema = require('./Job').schema;
 
 const developerSchema = new Schema({
-  user: [User.schema],
+/*   user: [User.schema], */
   projects: [{
     type: Schema.Types.ObjectId,
     ref: 'Project',
