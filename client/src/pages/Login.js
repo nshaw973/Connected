@@ -66,7 +66,7 @@ const LoginForm = () => {
                   Email
                 </label>
                 <input
-                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                   id="email"
                   type="email"
                   name="email"
@@ -85,7 +85,7 @@ const LoginForm = () => {
                 </label>
                 <input
                 
-                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                   id="password"
                   type="password"
                   name="password"
