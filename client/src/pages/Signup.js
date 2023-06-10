@@ -81,7 +81,7 @@ const SignupForm = () => {
                       First Name
                     </label>
                     <input
-                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                       id="first-name"
                       name="firstName"
                       type="text"
@@ -99,7 +99,7 @@ const SignupForm = () => {
                       Last Name
                     </label>
                     <input
-                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                       id="last-name"
                       name="lastName"
                       type="text"
@@ -112,7 +112,7 @@ const SignupForm = () => {
                 </section>
                 {/* credentials */}
                 <section>
-                  <div className="mb-4 mx-2 flex justify-center flex-col">
+                  <div className="mb-4 mx-2 flex justify-center flex-col ">
                     <label
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="name"
@@ -120,7 +120,7 @@ const SignupForm = () => {
                       Username
                     </label>
                     <input
-                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                       id="name"
                       name="username"
                       type="text"
@@ -138,7 +138,7 @@ const SignupForm = () => {
                       Email
                     </label>
                     <input
-                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                       id="email"
                       type="email"
                       name="email"
@@ -156,7 +156,7 @@ const SignupForm = () => {
                       Password
                     </label>
                     <input
-                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="input input-bordered w-full max-w-xs text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                       id="password"
                       type="password"
                       name="password"
