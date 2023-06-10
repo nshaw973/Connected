@@ -40,11 +40,24 @@ const resolvers = {
     getAllJobs: async () => {
       return Job.find();
     },
-    getAllRecruiters: async () => {
-      return Recruiter.find();
+    jobs: async (parent, { title, company }) => {
+      const jobs = await Job.find({ title, company });
+      return jobs;
     },
-    getAllDevelopers: async () => {
-      return Developer.find();
+    recruiters: async (parent, { firstName, lastName, company }) => {
+      const recruiters = await Recruiter.find({
+        firstName,
+        lastName,
+        company,
+      });
+      return recruiters;
+    },
+    developers: async (parent, { firstName, lastName }) => {
+      const developers = await Developer.find({
+        firstName,
+        lastName,
+      });
+      return developers;
     },
   },
 

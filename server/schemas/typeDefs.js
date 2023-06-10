@@ -57,9 +57,13 @@ const typeDefs = gql`
     getDeveloperById(id: ID!): Developer
     getRecruiterById(id: ID!): Recruiter
     getJobById(id: ID!): Job
-    getProjectById (id: ID!): Project
+    getProjectById(id: ID!): Project
     getAllJobs: [Job!]!
+    jobs(title: String!): [Job!]!
+    recruiters(firstName: String!, lastName: String!, company: String!): [Recruiter!]!
+    developers(firstName: String!, lastName: String!, company: String!): [Developer!]!
   }
+  
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, recruiter: Boolean!): Auth
