@@ -48,7 +48,7 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <div className="xapp flex flex-col min-h-screen">
+      <div className="xapp flex flex-col min-h-screen overflow-hidden">
         <Router>
           <Navbar />
           <div className="flex justify-center items-center flex-col flex-grow cmpContainer">
