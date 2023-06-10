@@ -37,6 +37,15 @@ const resolvers = {
       const project = await Project.findById(id);
       return project;
     },
+    getAllJobs: async () => {
+      return Job.find();
+    },
+    getAllRecruiters: async () => {
+      return Recruiter.find();
+    },
+    getAllDevelopers: async () => {
+      return Developer.find();
+    },
   },
 
   Mutation: {
@@ -151,6 +160,35 @@ const resolvers = {
         img,
       });
       return project;
+    },
+    deleteJob: async (parent, { jobId }, context) => {
+      const deletedJob = await Job.findByIdAndDelete(jobId);
+  
+      // remove the deleted job from the jobs array of all recruiters
+      await Recruiter.updateMany(
+        { jobs: jobId },
+        { $pull: { jobs: jobId } }
+      );
+      // remove the deleted job from the jobsAppliedTo array of all developers
+      await Developer.updateMany(
+        { jobsAppliedTo: jobId },
+        { $pull: { jobsAppliedTo: jobId } }
+      );
+      return deletedJob;
+    },
+
+    updateJobById: async (parent, { jobId, updatedFields }, context) => {
+      const updatedJob = await Job.findByIdAndUpdate(jobId, updatedFields, { new: true });
+      return updatedJob;
+    },
+  
+    updateDeveloper: async (parent, { developerId, githubUrl, skills } ) => {
+      const updatedDeveloper = await Developer.findByIdAndUpdate(
+        developerId,
+        { githubUrl, skills },
+        { new: true }
+      );
+      return updatedDeveloper;
     },
   },
 

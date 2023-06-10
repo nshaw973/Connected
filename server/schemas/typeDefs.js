@@ -58,6 +58,7 @@ const typeDefs = gql`
     getRecruiterById(id: ID!): Recruiter
     getJobById(id: ID!): Job
     getProjectById (id: ID!): Project
+    getAllJobs: [Job!]!
   }
 
   type Mutation {
@@ -67,6 +68,10 @@ const typeDefs = gql`
     createDeveloper(githubUrl: String!): Developer!
     createRecruiter(company: String!): Recruiter!
     createJob(title: String!, description: String!, salary: Float!): Job!
+    deleteJob(jobId: ID!): Job
+    updateJobById(jobId: ID!, title: String!, description: String!, salary: Float!): Job
+    updateRecruiter(recruiterId: ID!, company: String!): Recruiter!
+    updateDeveloper(developerId: ID!, githubUrl: String!): Developer!
     createProject(
       projectName: String!
       githubLink: String!
