@@ -49,7 +49,7 @@ export const CREATE_RECRUITER = gql`
 `;
 
 export const CREATE_JOB = gql`
-  mutation createJob($title: String!, $company: company, $description: String!, $salary: Float!) {
+  mutation createJob($title: String!, $company: company, $description: String!, $salary: Float) {
     createJob(title: $title, company: $company, description: $description, salary: $salary) {
       id
       title

@@ -7,6 +7,38 @@ function NewPost() {
     setFormVisible((prevVisible) => !prevVisible);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const title = event.currentTarget.elements.namedItem('postTitle')?.value;
+    const content = event.currentTarget.elements.namedItem('postContent')?.value;
+
+    try {
+      const response = await fetch('/api/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: title,
+          description: content
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Handle successful submission
+        console.log('Form submitted successfully');
+        event.currentTarget.reset(); // Reset the form
+      } else {
+        // Handle submission error
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
+  };
+
+
   return (
     <>
       
@@ -23,7 +55,7 @@ function NewPost() {
       {formVisible && (
         <div className="card" id="newPostForm" style={{ width: '700px' }}>
           <div className="card-body">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="titleInput">Job Title</label>
                 <input type="text" id="postTitle" className="form-control" placeholder="Enter title" />
