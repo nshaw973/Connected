@@ -14,7 +14,7 @@ function RecruiterDashPage() {
 
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || {}
-  console.log(user)
+  console.log(data)
   if (loading) {
     return <div>Loading...</div>;
   }
