@@ -11,8 +11,8 @@ function CandidatesSubmitted() {
     <div className="Candidatebackground">
     <div className="Candidate-list row">
       {submittedCandidates.map((candidate, index) => (
-        <Col md={3} className="Candidate-card">
-              <Card key={candidate.jobsId} md={3} >
+        <Col key={candidate.jobsId}  className="Candidate-card">
+              <Card md={3} >
                       <Candidate
                         key={index}
                         name={candidate.name}

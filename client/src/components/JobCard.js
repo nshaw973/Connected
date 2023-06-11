@@ -15,19 +15,19 @@ function JobCard({ title }) {
       <Col>
         <div className="stats bg-primary text-primary-content">
         
-        <div className="stat">
-          <div className="stat-title">{jobs.agency}</div>
-          <div className="stat-value">{jobs.title}</div>
+        <div className="stat" >
+          <div className="stat-title" style={{color: "white"}}>{jobs.agency}</div>
+          <div className="stat-value" style={{color: "white"}}>{jobs.title}</div>
           <div className="stat-actions">
-          <button className="btn btn-sm btn-success">Close Job Applications</button>
-          <button className="btn btn-sm">Edit Job Posting</button> 
-            <button className="btn btn-sm">Delete</button>
+          <button className="btn btn-sm btn-success" style={{color: "white"}}>Close Job Applications</button>
+          <button className="btn btn-sm" style={{color: "white"}}>Edit Job Posting</button> 
+            <button className="btn btn-sm" style={{color: "white"}}>Delete</button>
           </div>
         </div>
         
-        <div className="stat">
-          <div className="stat-title">Current # of Applications</div>
-          <div className="stat-value">27</div>
+        <div className="stat" >
+          <div className="stat-title" style={{color: "white"}}>Current # of Applications</div>
+          <div className="stat-value" style={{color: "white"}}>27</div>
           <div className="stat-actions">
           <button className="btn btn-sm btn-success">View Applications</button>
  
