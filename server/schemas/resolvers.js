@@ -146,20 +146,26 @@ const resolvers = {
       });
       return developer;
     },
+    
     createRecruiter: async (parent, { company }, context) => {
       const recruiter = await Recruiter.create({
         company,
       });
       return recruiter;
     },
-    createJob: async (parent, { title, description, salary }, context) => {
+
+
+
+    createJob: async (parent, { title, company, description, salary }, context) => {
       const job = await Job.create({
         title,
+        company,
         description,
         salary,
       });
-      return job;
+      return job.toObject();
     },
+
     createProject: async (
       parent,
       { projectName, githubLink, deploymentLink, description, img },
