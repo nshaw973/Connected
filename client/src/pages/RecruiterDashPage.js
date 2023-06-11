@@ -9,6 +9,8 @@ import CandidatesCommitted from '../components/CandidatesCommitted';
 import CandidatesSubmitted from '../components/CandidatesSubmitted';
 import CandidatesPlaced from '../components/CandidatesPlaced';
 import JobCard from '../components/JobCard';
+// import NewPostForm  from '../components/NewPostForm';  
+import NewPost  from '../components/NewPost';  
 
 function RecruiterDashPage() {
 
@@ -32,9 +34,11 @@ function RecruiterDashPage() {
       <h1>Recruiter Dashboard</h1>
       <br />
 
+
       <h3>My Job Postings</h3>
       <br />
       <JobCard />
+      <NewPost />
       
       <h3>Candidates Applied</h3>
       <CandidatesCommitted />
