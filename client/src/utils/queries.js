@@ -33,6 +33,7 @@ export const QUERY_GET_ALL_JOBS = gql`
     getAllJobs {
       id
       title
+      company
       description
       salary
     }
@@ -62,6 +63,7 @@ export const QUERY_GET_JOB_BY_ID = gql`
     getJobById(id: $id) {
       id
       title
+      company
       description
       salary
     }
@@ -73,6 +75,7 @@ export const QUERY_JOBS = gql`
     jobs(title: $title) {
       id
       title
+      company
       description
       salary
     }
@@ -99,7 +102,6 @@ export const QUERY_DEVELOPERS = gql`
     }
   }
 `;
-
 export const CREATE_DEVELOPER = gql`
   mutation createDeveloper($githubUrl: String!) {
     createDeveloper(githubUrl: $githubUrl) {
