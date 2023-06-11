@@ -11,14 +11,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/Homepage';
 import FeaturedCandidatePage from './pages/FeaturedCandidatePage';
-import CandidatesDashPage from './pages/CandidatesDashPage';
 import RecruiterPage from './pages/RecruiterPage';
 import RecruiterDashPage from './pages/RecruiterDashPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import JobsPage from './pages/JobsPage';
-import PageNotFound from './pages/PageNotFound';
-import SearchResults from './pages/SearchResults';
 import Success from './pages/Success'
 import Donate from './pages/DonationPage'
 //Pages
