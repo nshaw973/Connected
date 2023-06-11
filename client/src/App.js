@@ -58,6 +58,7 @@ const App = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/myportal" element={<RecruiterDashPage />} />
               <Route path="/recruiter/:username" element={<RecruiterDashPage />} />
+              <Route path="/featured-candidates" element={<FeaturedCandidatePage />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />

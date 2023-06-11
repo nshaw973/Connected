@@ -9,3 +9,58 @@
     margin-bottom: 250px;
     
 }
+
+.col {
+    flex: 0 0 25%;
+}
+
+/* #home {
+    background-color: aqua;
+} */
+
+  
+  .home-background {
+    width: 100%;
+    height: 100%;
+    /* Additional styling properties for the child */
+    background-image: url('../images/home-bg.png');
+    background-size: cover; 
+
+    /* background: #ca4242;  */
+    /* Replace with your desired background color or image */
+  }
+
+  .home-title {
+    text-align: center;
+    color: rgb(23, 23, 23);
+    font-size: 50px;
+  }
+  
+    .home-subtitle {
+    text-align: center;
+    color: rgb(23, 23, 23);
+    font-size: 30px;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 50px; 
+    /* Adjust the gap between the buttons as needed */
+    /* justify-content: space-between; */
+    justify-content: center;
+
+  }
+
+  /* button {
+    background-color: rgb(210, 87, 210);
+    color: white;
+  } */
+
+  h1 {
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .Candidate-list {
+    padding-top: 50px;
+  }

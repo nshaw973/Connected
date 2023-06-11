@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import cImage from '../images/c-image.png';
 
 function Candidate({ title, name, image, deployedLink, githubLink, isCommitted, isSubmitted, isPlaced }) {
   return (
@@ -8,7 +8,7 @@ function Candidate({ title, name, image, deployedLink, githubLink, isCommitted, 
   <section class="py-3">
   <div class="container px-4 mx-auto">
     <div class="relative p-6 text-center bg-gray-500 rounded-xl">
-      <img class="block mx-auto mb-5 w-28 h-28" src="trizzle-assets/images/avatar-men-1.png" alt=""/>
+      <img class="block mx-auto mb-5 w-28 h-28" src={cImage} alt=""/>
       <h4 class="text-xl text-white font-bold mb-3">{name}</h4>
       <p class="text-gray-300 mb-3">{title}</p>
       <span class="inline-block px-2 py-1 mb-6 text-xs text-green-500 font-medium bg-teal-900 rounded-full">Admin</span>
