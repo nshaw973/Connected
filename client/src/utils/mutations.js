@@ -49,7 +49,9 @@ export const CREATE_RECRUITER = gql`
 `;
 
 export const CREATE_JOB = gql`
+
   mutation createJob($title: String!, $company: company, $description: String!, $salary: Float!) {
+
     createJob(title: $title, company: $company, description: $description, salary: $salary) {
       id
       title
@@ -73,7 +75,9 @@ export const DELETE_JOB = gql`
 `;
 
 export const UPDATE_JOB_BY_ID = gql`
+
   mutation updateJobById($jobId: ID!, $title: String!, $company: company, $description: String!, $salary: Float!) {
+
     updateJobById(jobId: $jobId, title: $title, company: $company, description: $description, salary: $salary) {
       id
       title
