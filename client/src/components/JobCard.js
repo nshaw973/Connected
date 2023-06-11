@@ -38,12 +38,12 @@ function JobCard({ title }) {
     ))}
       </div>
     </div>
-    <br></br>
+    {/* <br></br>
     <div className="stats bg-primary text-primary-content">
         <div className="stat">
           <Button className="stat-value">Create a new job post</Button>
         </div>
-      </div>
+      </div> */}
 
     <br></br>
     <br></br>
