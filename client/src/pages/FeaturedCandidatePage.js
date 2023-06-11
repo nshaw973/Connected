@@ -11,12 +11,9 @@ function FeaturedCandidatePage() {
       return (
         <div className="Candidatebackground">
         <h1>Featured Candidates</h1>
-        <br/>
-        <br/>
-        <br/>
         <div className="Candidate-list row"> 
           {candidateData.map((Candidates, index) => (
-          <Col key={Candidates.jobsId} class={`col-md-3`}>
+          <Col key={Candidates.jobsId} class={`col col-md-3`}>
              <Card key={Candidate.jobsId}  >
              <Candidate
                 key={index}

@@ -4,7 +4,8 @@ import { Container } from 'react-bootstrap';
 
 function HomePage() {
   return (
-    <section id="home" className='max-w-lg mx-auto flex justify-center items-center flex-col flex-grow'>
+    <div className="home-background">
+    <section id="home" className='home max-w-lg mx-auto flex justify-center items-center flex-col flex-grow'>
        <div className="home-bg">
         <Container>
           <h2 className="home-title">Let's Build Together</h2>
@@ -13,21 +14,23 @@ function HomePage() {
                 Looking for Candidates? 
                 Let us help you! 
           </p>
+          <div className='button-container'>
           <button
-            className="jobs-btn"
-            href="/contact"
+            className="jobs-btn btn btn-primary btn-block btn-info"
+            href="/jobs"
           >
             Find jobs
           </button>
           <br />
           <button
-            className="candidates-btn"
+            className="candidates-btn btn btn-primary btn-block btn-info"
             onClick={() => {
               window.open("https://www.linkedin.com/");
             }}
           >
             Find Candidates
           </button>
+          </div>
           <span></span>
           <p className="copyright">
             <br />
@@ -38,7 +41,7 @@ function HomePage() {
     </div>
     
     </section>
-    
+    </div>
   );
 }
 
