@@ -27,11 +27,8 @@ export const QUERY_CHECKOUT = gql`
       session
     }
   }
-<<<<<<< HEAD
-`;
-=======
-`;
 
+`;
 export const QUERY_GET_ALL_JOBS = gql`
   query getAllJobs {
     getAllJobs {
@@ -174,4 +171,3 @@ export const UPDATE_DEVELOPER = gql`
     }
   }
 `;
->>>>>>> main
