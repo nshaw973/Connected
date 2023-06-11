@@ -15,21 +15,19 @@ function HomePage() {
                 Let us help you! 
           </p>
           <div className='button-container'>
-          <button
+          <a
             className="jobs-btn btn btn-primary btn-block btn-info"
             href="/jobs"
           >
             Find jobs
-          </button>
+          </a>
           <br />
-          <button
+          <a
             className="candidates-btn btn btn-primary btn-block btn-info"
-            onClick={() => {
-              window.open("https://www.linkedin.com/");
-            }}
+            href="/featured-candidates"
           >
             Find Candidates
-          </button>
+          </a>
           </div>
           <span></span>
           <p className="copyright">
