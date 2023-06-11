@@ -33,6 +33,7 @@ export const QUERY_GET_ALL_JOBS = gql`
     getAllJobs {
       id
       title
+      company
       description
       salary
     }
@@ -62,6 +63,7 @@ export const QUERY_GET_JOB_BY_ID = gql`
     getJobById(id: $id) {
       id
       title
+      company
       description
       salary
     }
@@ -73,6 +75,7 @@ export const QUERY_JOBS = gql`
     jobs(title: $title) {
       id
       title
+      company
       description
       salary
     }
@@ -100,71 +103,3 @@ export const QUERY_DEVELOPERS = gql`
   }
 `;
 
-export const CREATE_DEVELOPER = gql`
-  mutation createDeveloper($githubUrl: String!) {
-    createDeveloper(githubUrl: $githubUrl) {
-      id
-      githubUrl
-    }
-  }
-`;
-
-export const CREATE_RECRUITER = gql`
-  mutation createRecruiter($company: String!) {
-    createRecruiter(company: $company) {
-      id
-      company
-    }
-  }
-`;
-
-export const CREATE_JOB = gql`
-  mutation createJob($title: String!, $description: String!, $salary: Float!) {
-    createJob(title: $title, description: $description, salary: $salary) {
-      id
-      title
-      description
-      salary
-    }
-  }
-`;
-
-export const DELETE_JOB = gql`
-  mutation deleteJob($jobId: ID!) {
-    deleteJob(jobId: $jobId) {
-      id
-      title
-      description
-      salary
-    }
-  }
-`;
-
-export const UPDATE_JOB_BY_ID = gql`
-  mutation updateJobById($jobId: ID!, $title: String!, $description: String!, $salary: Float!) {
-    updateJobById(jobId: $jobId, title: $title, description: $description, salary: $salary) {
-      id
-      title
-      description
-      salary
-    }
-  }
-`;
-
-export const UPDATE_RECRUITER = gql`
-  mutation updateRecruiter($recruiterId: ID!, $company: String!) {
-    updateRecruiter(recruiterId: $recruiterId, company: $company) {
-      id
-      company
-    }
-  }
-`;
-
-export const UPDATE_DEVELOPER = gql`
-  mutation updateDeveloper($developerId: ID!, $githubUrl: String!) {
-    updateDeveloper(developerId: $developerId, githubUrl: $githubUrl) {
-      id
-      githubUrl
-    }
-  }
-`;
