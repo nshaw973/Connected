@@ -27,7 +27,7 @@ const typeDefs = gql`
     id: ID!
     title: String!
     description: String!
-    salary: Float!
+    salary: Float
   }
   type Project {
     id: ID!
