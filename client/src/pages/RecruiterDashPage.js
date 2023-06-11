@@ -13,8 +13,8 @@ import JobCard from '../components/JobCard';
 function RecruiterDashPage() {
 
   const { loading, data } = useQuery(QUERY_ME);
-  console.log(data)
-  console.log(Auth.getProfile().data)
+  const user = data?.me || {}
+  console.log(user)
   if (loading) {
     return <div>Loading...</div>;
   }

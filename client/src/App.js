@@ -62,6 +62,7 @@ const App = () => {
               <Route path="/donate" element={<Donate />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/success" element={<Success />} />
             </Routes>
 
           </div>

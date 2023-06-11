@@ -84,10 +84,6 @@ const typeDefs = gql`
       img: String!
     ): Project!
   }
-  schema {
-    mutation: Mutation
-    query: Query
-  }
 `;
 
 module.exports = typeDefs;

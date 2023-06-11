@@ -19,7 +19,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('Error, you need to be logged in!');
+      throw new AuthenticationError('You need to be logged in!');
     },
     getDeveloperById: async (parent, { id }, context) => {
       const developer = await Developer.findById(id);
@@ -116,8 +116,8 @@ const resolvers = {
             },
           ],
           mode: 'payment',
-          success_url: `${url}/success`, // Redirect URL after successful payment
-          cancel_url: `${url}/cancel`, // Redirect URL after canceled payment
+          success_url: `${url}/success`,
+          cancel_url: `${url}/cancel`,
         });
         // Fetch the donor details from the User model
         const donor = await User.findById(id);
@@ -132,7 +132,6 @@ const resolvers = {
           donor: donor._id,
         });
         await donation.save();
-        console.log(donation);
         return session.id;
       } catch (error) {
         console.error(error);
