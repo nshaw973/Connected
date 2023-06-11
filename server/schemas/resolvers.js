@@ -152,9 +152,10 @@ const resolvers = {
       });
       return recruiter;
     },
-    createJob: async (parent, { title, description, salary }, context) => {
+    createJob: async (parent, { title, company, description, salary }, context) => {
       const job = await Job.create({
         title,
+        company,
         description,
         salary,
       });
