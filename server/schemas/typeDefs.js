@@ -15,14 +15,17 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+
   type Developer {
     id: ID!
     githubUrl: String!
   }
+
   type Recruiter {
     id: ID!
     company: String!
   }
+
   type Job {
     id: ID!
     title: String!
@@ -50,20 +53,10 @@ const typeDefs = gql`
   }
 
   type Query {
+    users: [User]
     user(username: String!): User
     me: User
-    donation(_id: ID, donationAmount: Float): Donation
-    checkout(donation: ID!): Checkout
-    getDeveloperById(id: ID!): Developer
-    getRecruiterById(id: ID!): Recruiter
-    getJobById(id: ID!): Job
-    getProjectById(id: ID!): Project
-    getAllJobs: [Job!]!
-    jobs(title: String!): [Job!]!
-    recruiters(firstName: String!, lastName: String!, company: String!): [Recruiter!]!
-    developers(firstName: String!, lastName: String!, company: String!): [Developer!]!
   }
-  
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, recruiter: Boolean!): Auth
@@ -83,10 +76,6 @@ const typeDefs = gql`
       description: String!
       img: String!
     ): Project!
-  }
-  schema {
-    mutation: Mutation
-    query: Query
   }
 `;
 

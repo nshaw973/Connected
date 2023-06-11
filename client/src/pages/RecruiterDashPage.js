@@ -15,8 +15,8 @@ import NewPost  from '../components/NewPost';
 function RecruiterDashPage() {
 
   const { loading, data } = useQuery(QUERY_ME);
+  const user = data?.me || {}
   console.log(data)
-  console.log(Auth.getProfile().data)
   if (loading) {
     return <div>Loading...</div>;
   }

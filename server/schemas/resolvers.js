@@ -2,9 +2,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const {
   User,
   Job,
-  Developer,
-  Recruiter,
-  Project,
   Donation,
 } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -12,52 +9,17 @@ const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 const resolvers = {
   Query: {
-    user: async () => {
-      return User.find();
+    users: async () => {
+      return await User.find();
+    },
+    user: async (parent, { username }) => {
+      return await User.findOne({ username });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return await User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('Error, you need to be logged in!');
-    },
-    getDeveloperById: async (parent, { id }, context) => {
-      const developer = await Developer.findById(id);
-      return developer;
-    },
-    getRecruiterById: async (parent, { id }, context) => {
-      const recruiter = await Recruiter.findById(id);
-      return recruiter;
-    },
-    getJobById: async (parent, { id }, context) => {
-      const job = await Job.findById(id);
-      return job;
-    },
-    getProjectById: async (parent, { id }, context) => {
-      const project = await Project.findById(id);
-      return project;
-    },
-    getAllJobs: async () => {
-      return Job.find();
-    },
-    jobs: async (parent, { title, company }) => {
-      const jobs = await Job.find({ title, company });
-      return jobs;
-    },
-    recruiters: async (parent, { firstName, lastName, company }) => {
-      const recruiters = await Recruiter.find({
-        firstName,
-        lastName,
-        company,
-      });
-      return recruiters;
-    },
-    developers: async (parent, { firstName, lastName }) => {
-      const developers = await Developer.find({
-        firstName,
-        lastName,
-      });
-      return developers;
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 
@@ -116,8 +78,8 @@ const resolvers = {
             },
           ],
           mode: 'payment',
-          success_url: `${url}/success`, // Redirect URL after successful payment
-          cancel_url: `${url}/cancel`, // Redirect URL after canceled payment
+          success_url: `${url}/success`,
+          cancel_url: `${url}/cancel`,
         });
         // Fetch the donor details from the User model
         const donor = await User.findById(id);
@@ -132,7 +94,6 @@ const resolvers = {
           donor: donor._id,
         });
         await donation.save();
-        console.log(donation);
         return session.id;
       } catch (error) {
         console.error(error);

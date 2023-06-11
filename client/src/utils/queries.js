@@ -20,14 +20,15 @@ export const QUERY_USER = gql`
   }
 `;
 
+
 export const QUERY_CHECKOUT = gql`
   query getCheckout($donation: ID!) {
     checkout(donation: $donation) {
       session
     }
   }
-`;
 
+`;
 export const QUERY_GET_ALL_JOBS = gql`
   query getAllJobs {
     getAllJobs {
