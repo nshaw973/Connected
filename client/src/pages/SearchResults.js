@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-// import userSchema from "../server/models/User";
-// import developerSchema from "../server/models/Developer";
-// import recruiterSchema from "../server/models/Recruiter";
-// import jobSchema from "../server/models/Job";
+import { useQuery } from '@apollo/client';
+import { QUERY_USER, QUERY_GET_ALL_JOBS, QUERY_RECRUITERS, QUERY_JOBS, QUERY_DEVELOPERS  } from '../utils/queries';
+
 
 export default function SearchResults() {
   const { word } = useParams();

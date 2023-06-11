@@ -27,12 +27,15 @@ const LoginForm = () => {
       const { data } = await login({
         variables: { ...loginForm },
       });
+      console.log(data)
 
       Auth.login(data.login.token);
+
       setLoginState({
         email: '',
         password: '',
       });
+
     } catch (e) {
       console.error(e);
     }
@@ -66,7 +69,7 @@ const LoginForm = () => {
                   Email
                 </label>
                 <input
-                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                   id="email"
                   type="email"
                   name="email"
@@ -85,7 +88,7 @@ const LoginForm = () => {
                 </label>
                 <input
                 
-                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
                   id="password"
                   type="password"
                   name="password"

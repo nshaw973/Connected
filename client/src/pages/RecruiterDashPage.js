@@ -1,9 +1,8 @@
 import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
 // import Candidate from '../components/Candidate';
 // import candidateData from '../placeholders/candidateData';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 import CandidatesCommitted from '../components/CandidatesCommitted';
@@ -12,23 +11,15 @@ import CandidatesPlaced from '../components/CandidatesPlaced';
 import JobCard from '../components/JobCard';
 
 function RecruiterDashPage() {
-  const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
-  });
-
-  const user = data?.me || data?.user || {};
-  console.log(user)
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/myportal" />;
-  }
-
+  const { loading, data } = useQuery(QUERY_ME);
+  console.log(data)
+  console.log(Auth.getProfile().data)
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
+  if (!Auth.getProfile().data ) {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to

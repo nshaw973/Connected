@@ -37,6 +37,28 @@ const resolvers = {
       const project = await Project.findById(id);
       return project;
     },
+    getAllJobs: async () => {
+      return Job.find();
+    },
+    jobs: async (parent, { title, company }) => {
+      const jobs = await Job.find({ title, company });
+      return jobs;
+    },
+    recruiters: async (parent, { firstName, lastName, company }) => {
+      const recruiters = await Recruiter.find({
+        firstName,
+        lastName,
+        company,
+      });
+      return recruiters;
+    },
+    developers: async (parent, { firstName, lastName }) => {
+      const developers = await Developer.find({
+        firstName,
+        lastName,
+      });
+      return developers;
+    },
   },
 
   Mutation: {
@@ -151,6 +173,35 @@ const resolvers = {
         img,
       });
       return project;
+    },
+    deleteJob: async (parent, { jobId }, context) => {
+      const deletedJob = await Job.findByIdAndDelete(jobId);
+  
+      // remove the deleted job from the jobs array of all recruiters
+      await Recruiter.updateMany(
+        { jobs: jobId },
+        { $pull: { jobs: jobId } }
+      );
+      // remove the deleted job from the jobsAppliedTo array of all developers
+      await Developer.updateMany(
+        { jobsAppliedTo: jobId },
+        { $pull: { jobsAppliedTo: jobId } }
+      );
+      return deletedJob;
+    },
+
+    updateJobById: async (parent, { jobId, updatedFields }, context) => {
+      const updatedJob = await Job.findByIdAndUpdate(jobId, updatedFields, { new: true });
+      return updatedJob;
+    },
+  
+    updateDeveloper: async (parent, { developerId, githubUrl, skills } ) => {
+      const updatedDeveloper = await Developer.findByIdAndUpdate(
+        developerId,
+        { githubUrl, skills },
+        { new: true }
+      );
+      return updatedDeveloper;
     },
   },
 
