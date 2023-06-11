@@ -27,12 +27,15 @@ const LoginForm = () => {
       const { data } = await login({
         variables: { ...loginForm },
       });
+      console.log(data)
 
       Auth.login(data.login.token);
+
       setLoginState({
         email: '',
         password: '',
       });
+
     } catch (e) {
       console.error(e);
     }

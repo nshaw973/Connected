@@ -154,6 +154,7 @@ const Navbar = () => {
                 <>
                   <div className="flex justify-end flex-1 px-2">
                     <div className="flex items-stretch">
+                    <h5 className='hidden lg:block text-gray-300 hover:text-white px-3 py-3 rounded-md text-sm font-medium'>Welcome! {Auth.getProfile().data.username}</h5>
                       <div className="dropdown dropdown-end">
                         <label
                           tabIndex={0}
