@@ -187,9 +187,6 @@ const Navbar = () => {
                 <>
                   <div className=" flex justify-end flex-1 px-2 dropdown dropdown-end">
                     <div className="flex items-stretch">
-                      <h5 className="hidden lg:block text-black hover:text-black px-3 py-3 rounded-md text-md font-medium">
-                        Welcome! {Auth.getProfile().data.username}
-                      </h5>
                       <div>
                         <label
                           tabIndex={0}
