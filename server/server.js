@@ -71,7 +71,13 @@ app.get('/success', (req, res) => {
 app.get('/jobs', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-app.get('/candidates', (req, res) => {
+app.get('/myportal/developer', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/developer', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/myportal/recruiter', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 app.get('/recruiter', (req, res) => {

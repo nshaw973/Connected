@@ -1,20 +1,13 @@
-// import React from 'react';
-// // import '../styles/style.css';
-// import { Container } from 'react-bootstrap';
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useMutation } from '@apollo/client';
-import { Container, Col, Form, Button, Card, Row } from 'react-bootstrap';
+import { Container, Col, Button, Card, Row } from 'react-bootstrap';
 import searchedJobsData from '../placeholders/searchedJobsData';
 import { ADD_TO_FAVORITES } from '../utils/mutations';
-
-import Auth from '../utils/auth';
-
 import { QUERY_GET_ALL_JOBS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 const JobsPage = () => {
-  const { loading, data } = useQuery(QUERY_GET_ALL_JOBS);
+  const { data } = useQuery(QUERY_GET_ALL_JOBS);
   const jobs = data?.jobs || [];
   const [addToFavorites] = useMutation(ADD_TO_FAVORITES);
   const handleAddToFavorites = async (jobId) => {
@@ -49,8 +42,6 @@ const JobsPage = () => {
                     <p className="small">Agency: {jobs.company}</p>
                     <p className="small">salary: {jobs.salary}</p>
                     <Card.Text>{jobs.description}</Card.Text>
-
-                    {/* {Auth.loggedIn() && ( */}
                     <Button
                       // disabled={savedjobsIds?.some((savedjobsId) => savedjobsId === jobs.jobsId)}
                       className="btn-block btn-info"
@@ -62,8 +53,6 @@ const JobsPage = () => {
                         ? 'This jobs has already been saved!'
                         : 'Favorite this job'}
                     </Button>
-
-                    {/* )}  */}
                   </Card.Body>
                 </Card>
               </Col>
