@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  mutation me {
+  query me {
     me {
       _id
       username
@@ -11,7 +11,7 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_USER = gql`
-  mutation user($username: String!) {
+  query user($username: String!) {
     user(username: $username) {
       _id
       username
@@ -22,7 +22,7 @@ export const QUERY_USER = gql`
 
 
 export const QUERY_CHECKOUT = gql`
-  mutation getCheckout($donation: ID!) {
+  query getCheckout($donation: ID!) {
     checkout(donation: $donation) {
       session
     }
@@ -30,7 +30,7 @@ export const QUERY_CHECKOUT = gql`
 
 `;
 export const QUERY_GET_ALL_JOBS = gql`
-  mutation getAllJobs {
+  query getAllJobs {
     getAllJobs {
       id
       title
@@ -42,7 +42,7 @@ export const QUERY_GET_ALL_JOBS = gql`
 `;
 
 export const QUERY_GET_DEVELOPER_BY_ID = gql`
-  mutation getDeveloperById($id: ID!) {
+  query getDeveloperById($id: ID!) {
     getDeveloperById(id: $id) {
       id
       githubUrl
@@ -51,7 +51,7 @@ export const QUERY_GET_DEVELOPER_BY_ID = gql`
 `;
 
 export const QUERY_GET_RECRUITER_BY_ID = gql`
-  mutation getRecruiterById($id: ID!) {
+  query getRecruiterById($id: ID!) {
     getRecruiterById(id: $id) {
       id
       company
@@ -60,7 +60,7 @@ export const QUERY_GET_RECRUITER_BY_ID = gql`
 `;
 
 export const QUERY_GET_JOB_BY_ID = gql`
-  mutation getJobById($id: ID!) {
+  query getJobById($id: ID!) {
     getJobById(id: $id) {
       id
       title
@@ -72,7 +72,7 @@ export const QUERY_GET_JOB_BY_ID = gql`
 `;
 
 export const QUERY_JOBS = gql`
-  mutation jobs($title: String!) {
+  query jobs($title: String!) {
     jobs(title: $title) {
       id
       title
@@ -84,7 +84,7 @@ export const QUERY_JOBS = gql`
 `;
 
 export const QUERY_RECRUITERS = gql`
-  mutation recruiters($firstName: String!, $lastName: String!, $company: String!) {
+  query recruiters($firstName: String!, $lastName: String!, $company: String!) {
     recruiters(firstName: $firstName, lastName: $lastName, company: $company) {
       id
       firstName
@@ -95,7 +95,7 @@ export const QUERY_RECRUITERS = gql`
 `;
 
 export const QUERY_DEVELOPERS = gql`
-  mutation developers($firstName: String!, $lastName: String!, $company: String!) {
+  query developers($firstName: String!, $lastName: String!, $company: String!) {
     developers(firstName: $firstName, lastName: $lastName) {
       id
       firstName
@@ -104,7 +104,7 @@ export const QUERY_DEVELOPERS = gql`
   }
 `;
 export const CREATE_DEVELOPER = gql`
-  mutation createDeveloper($githubUrl: String!) {
+  query createDeveloper($githubUrl: String!) {
     createDeveloper(githubUrl: $githubUrl) {
       id
       githubUrl
@@ -113,7 +113,7 @@ export const CREATE_DEVELOPER = gql`
 `;
 
 export const CREATE_RECRUITER = gql`
-  mutation createRecruiter($company: String!) {
+  query createRecruiter($company: String!) {
     createRecruiter(company: $company) {
       id
       company
@@ -122,7 +122,7 @@ export const CREATE_RECRUITER = gql`
 `;
 
 export const CREATE_JOB = gql`
-  mutation createJob($title: String!, $description: String!, $salary: Float!) {
+  query createJob($title: String!, $description: String!, $salary: Float!) {
     createJob(title: $title, description: $description, salary: $salary) {
       id
       title
@@ -133,7 +133,7 @@ export const CREATE_JOB = gql`
 `;
 
 export const DELETE_JOB = gql`
-  mutation deleteJob($jobId: ID!) {
+  query deleteJob($jobId: ID!) {
     deleteJob(jobId: $jobId) {
       id
       title
@@ -144,7 +144,7 @@ export const DELETE_JOB = gql`
 `;
 
 export const UPDATE_JOB_BY_ID = gql`
-  mutation updateJobById($jobId: ID!, $title: String!, $description: String!, $salary: Float!) {
+  query updateJobById($jobId: ID!, $title: String!, $description: String!, $salary: Float!) {
     updateJobById(jobId: $jobId, title: $title, description: $description, salary: $salary) {
       id
       title
@@ -155,7 +155,7 @@ export const UPDATE_JOB_BY_ID = gql`
 `;
 
 export const UPDATE_RECRUITER = gql`
-  mutation updateRecruiter($recruiterId: ID!, $company: String!) {
+  query updateRecruiter($recruiterId: ID!, $company: String!) {
     updateRecruiter(recruiterId: $recruiterId, company: $company) {
       id
       company
@@ -164,7 +164,7 @@ export const UPDATE_RECRUITER = gql`
 `;
 
 export const UPDATE_DEVELOPER = gql`
-  mutation updateDeveloper($developerId: ID!, $githubUrl: String!) {
+  query updateDeveloper($developerId: ID!, $githubUrl: String!) {
     updateDeveloper(developerId: $developerId, githubUrl: $githubUrl) {
       id
       githubUrl

@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// This is to get stripe to take the user back the the /success page of our application
 app.get("/success", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
