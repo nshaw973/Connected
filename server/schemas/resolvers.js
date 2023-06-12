@@ -60,7 +60,7 @@ const resolvers = {
 
     createCheckoutSession: async (parent, { amount }, context) => {
       try {
-        const url = new URL(context.headers.referer).origin;
+        const url = 'https://limitless-journey-78350.herokuapp.com' || new URL(context.headers.referer).origin;
         const id = context.user._id;
         // Create a new Stripe Checkout session
         const session = await stripe.checkout.sessions.create({
