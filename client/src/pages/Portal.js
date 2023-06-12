@@ -7,7 +7,6 @@ import { QUERY_ME } from '../utils/queries';
 function Portal() {
   const { loading, data } = useQuery(QUERY_ME);
   const user = data?.me || {};
- console.log(user)
   if (loading) {
     return <div>Loading...</div>;
   }

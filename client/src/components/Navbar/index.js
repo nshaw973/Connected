@@ -127,7 +127,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <Link
-                      to="/candidates"
+                      to="/developers"
                       className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
                     >
                       Find Candidates
@@ -149,9 +149,8 @@ const Navbar = () => {
               >
                 <option value="jobs">Job</option>
                 <option value="recruiter">Recruiter</option>
-                <option value="candidates">Candidate</option>
+                <option value="developers">Developer</option>
               </select>
-
               <input
                 type="text"
                 value={searchTerm}

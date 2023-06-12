@@ -5,7 +5,7 @@ import { QUERY_ME, QUERY_USER } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-const RecruitePage = () => {
+const DeveloperPage = () => {
   const { username: userParam } = useParams();
   console.log(userParam)
 
@@ -32,15 +32,16 @@ const RecruitePage = () => {
     );
   }
   
-  if (!user.recruiter) {
-    return <Navigate to={`/developers/${user.username}`} />;
+  if (user.recruiter) {
+    return <Navigate to={`/recruiters/${user.username}`} />;
   }
   return (
     <>
     <h1>{user.username}</h1>
-    <h1>Hello and Welcome!</h1>
+    <h3>Developer</h3>
+    <h2>About me:</h2>
     </>
   )
 };
 
-export default RecruitePage;
+export default DeveloperPage;

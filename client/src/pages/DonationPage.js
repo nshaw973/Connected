@@ -92,7 +92,10 @@ const Donation = () => {
           </div>
         </div>
       ) : (
-        <h1> Please <Link to="/login">login</Link> if you'd like to donate! :) </h1>
+        <h1>
+          {' '}
+          Please <Link to="/login">login</Link> if you'd like to donate! :){' '}
+        </h1>
       )}
     </>
   );
