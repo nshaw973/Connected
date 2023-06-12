@@ -26,8 +26,17 @@ app.get('/', (req, res) => {
 });
 
 // This is to get stripe to take the user back the the /success page of our application
-app.get("/success", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+app.get('/success', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/jobs', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/candidates', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/recruiter', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 const startApolloServer = async () => {
