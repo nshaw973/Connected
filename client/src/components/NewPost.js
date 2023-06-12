@@ -2,10 +2,24 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_JOB_MUTATION } from '../utils/mutations';
 
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
+
+
+
 function NewPost() {
   const [formVisible, setFormVisible] = useState(false);
   const [createJob] = useMutation(CREATE_JOB_MUTATION);
 
+
+  
+ // Get the username of the logged-in user
+    const { loading, data } = useQuery(QUERY_ME);
+    const user = data?.me || {};
+
+  
+    
+  // Toggles new post
   const handleNewPostClick = () => {
     setFormVisible((prevVisible) => !prevVisible);
   };
@@ -13,14 +27,19 @@ function NewPost() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    console.log(user)
+
     const title = event.currentTarget.elements.namedItem('postTitle')?.value;
     const description = event.currentTarget.elements.namedItem('postContent')?.value;
     const company = event.currentTarget.elements.namedItem('postCompany')?.value;
     const salary = parseFloat(event.currentTarget.elements.namedItem('postSalary')?.value);
+    const jobAuthor = user.username;
+    console.log(jobAuthor)
+
 
     try {
       const { data } = await createJob({
-        variables: { title, description, company, salary },
+        variables: { title, description, company, salary, jobAuthor },
       });
 
       alert('Form submitted successfully', data);

@@ -23,8 +23,11 @@ const resolvers = {
     },
     jobs: async () => {
       return await Job.find();
-    }
+    },
 
+    // userRecruiter: async (parent, { username }) => {
+    //   return User.findOne({ username });
+    // }
     
   },
 
@@ -166,12 +169,13 @@ const resolvers = {
     // },
 
 
-    createJob: async (_, { title, company, description, salary }) => {
+    createJob: async (_, { title, company, description, salary, jobAuthor }) => {
       const job = await Job.create({
         title,
         company,
         description,
         salary,
+        jobAuthor
       });
       return job;
     },

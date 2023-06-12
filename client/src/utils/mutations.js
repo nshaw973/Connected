@@ -26,25 +26,27 @@ export const ADD_USER = gql`
 
 export const CREATE_JOB = gql`
 
-  mutation createJob($title: String!, $company: company, $description: String!, $salary: Float) {
+  mutation createJob($title: String!, $company: company, $description: String!, $salary: Float, $jobAuthor: String) {
 
-    createJob(title: $title, company: $company, description: $description, salary: $salary) {
+    createJob(title: $title, company: $company, description: $description, salary: $salary, jobAuthor: $jobAuthor) {
       id
       title
       company
       description
       salary
+      jobAuthor
     }
   }
 `;
 
 export const CREATE_JOB_MUTATION = gql`
-  mutation createJob($title: String!, $company: String, $description: String!, $salary: Float) {
-    createJob(title: $title, company: $company, description: $description, salary: $salary) {
+  mutation createJob($title: String!, $company: String, $description: String!, $salary: Float, $jobAuthor: String) {
+    createJob(title: $title, company: $company, description: $description, salary: $salary, jobAuthor: $jobAuthor) {
       title
       company
       description
       salary
+      jobAuthor
     }
   }
 `;
@@ -109,6 +111,7 @@ export const DELETE_JOB = gql`
       company
       description
       salary
+      jobAuthor
     }
   }
 `;

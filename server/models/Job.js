@@ -24,11 +24,17 @@ const jobSchema = new Schema({
     type: Number,
     required: true,
   },
-
+  jobAuthor: {
+    type: String, 
+    
+  },
   applicants: [{
     type: Schema.Types.ObjectId,
     ref: 'User',
   }],
+
+
+  
 },
   {
     toJSON: {

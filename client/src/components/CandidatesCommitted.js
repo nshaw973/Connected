@@ -13,7 +13,7 @@ function CandidatesCommitted() {
       <div className="Candidate-list row">
         {committedCandidates.map((candidate, index) => (
           <Col  className="Candidate-card">
-                <Card key={candidate.jobsId} md={3} >
+                <div key={candidate.jobsId} md={3} >
                         <Candidate
                           key={index}
                           name={candidate.name}
@@ -22,7 +22,7 @@ function CandidatesCommitted() {
                           deployedLink={candidate.deployedLink}
                           githubLink={candidate.githubLink}
                         />
-                 </Card>
+                 </div>
           </Col>
         ))}
       </div>
