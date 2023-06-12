@@ -7,7 +7,7 @@ const recruiterSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-    company: {
+    agency: {
       type: String,
       required: true,
       maxLength: 50,

@@ -22,16 +22,21 @@ const typeDefs = gql`
   }
 
   type Recruiter {
-    id: ID!
-    company: String!
+    _id: ID!
+    user: User
+    agency: String!
+    jobs: [Job]
+    desiredRoles: [String]
   }
 
   type Job {
-    id: ID!
+    _id: ID!
     title: String!
     company: String
     description: String!
     salary: Float
+    recruiter: Recruiter
+    jobAuthor: String
   }
   type Project {
     id: ID!
@@ -58,6 +63,7 @@ const typeDefs = gql`
     user(username: String!): User
     me: User
     jobs: [Job]
+    recruiters: [Recruiter]
   }
 
   type Mutation {
@@ -67,7 +73,7 @@ const typeDefs = gql`
     createDeveloper(githubUrl: String!): Developer!
     createRecruiter(company: String!): Recruiter!
     # createPost(title: String!, description: String!): Post!
-    createJob(title: String!, company: String, description: String!, salary: Float): Job!
+    createJob(title: String!, company: String, description: String!, salary: Float, jobAuthor: String): Job!
     deleteJob(jobId: ID!): Job
     updateJobById(jobId: ID!, title: String!, description: String!, salary: Float!): Job
     updateRecruiter(recruiterId: ID!, company: String!): Recruiter!
