@@ -63,6 +63,23 @@ const resolvers = {
       return { token, user };
     },
 
+    updateProfileImage: async (parent, { profileImage }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('Must be logged in to perform this action');
+      }
+    
+      try {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { profileImage },
+          { new: true }
+        );
+    
+        return user;
+      } catch (error) {
+        throw new Error('Failed to update profile image');
+      }
+    },
 
     createCheckoutSession: async (parent, { amount }, context) => {
       try {

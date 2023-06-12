@@ -38,34 +38,10 @@ const userSchema = new Schema({
   recruiter: {
     type: Boolean,
     required: true
+  },
+  profileImage: {
+    type: String,
   }
-  // role: {
-  //   type: String,
-  //   required: true,
-  //   default: "Developer",
-  // },
-  // // this will only get passed through if you select recruiter option via the front-end 
-  // company : {
-  //   type: String
-  // },
-  // bio: {
-  //   type: String,
-  //   required: false,
-  //   maxLength: 2000,
-  // },
-  // favoriteDevelopers: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "User",
-  //   },
-  // ],
-  // favoriteRecruiters: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "User",
-  //   },
-  // ],
-  // devInfo: [developerSchema]
 });
 
 userSchema.pre('save', async function (next) {
