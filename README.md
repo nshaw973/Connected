@@ -1,6 +1,12 @@
 # Connected
 
-Connected is an application designed to streamline the process of connecting candidates with the right staffing agencies or recruiters to help them secure the best-paying job opportunities quickly. Similar to the real estate model, where agents advertise properties and find buyers for a commission, Connected enables recruiters to advertise candidates and match them with suitable job opportunities in exchange for a fee.
+## Description
+Connected is an application designed to streamline the process of connecting candidates with the right staffing agencies or recruiters to help them secure the best-paying job opportunities quickly. 
+
+*Similar to the real estate model, where agents advertise properties and find buyers for a commission, Connected enables recruiters to advertise candidates and match them with suitable job opportunities in exchange for a fee.*
+
+<br>
+<br>
 
 ## Key Features
 
@@ -20,6 +26,34 @@ Connected is an application designed to streamline the process of connecting can
 3. **Dashboard for Candidate Management**: Recruiters have access to a dashboard that displays candidates who have committed to their job opportunities and candidates they have pushed or applied to companies.
 4. **Favorite Jobs Insight**: Recruiters can view a candidate's favorite jobs, gaining insights into their preferences and interests.
 
+<br>
+<br>
+
+## Getting Started
+
+        To use Connected, follow these steps:
+
+        1. Visit the Connected website and create an account as a candidate or recruiter.
+
+        2. For Candidates:
+        - Set up your profile, including skills, experience, and desired timeline.
+        - Upload your resume(s) to showcase your qualifications.
+        - Research and review various staffing agencies to find the right match.
+        - View job opportunities and connect with recruiters.
+        - Partner with agencies and task them to find suitable jobs for you.
+        - Stage your resume for specific job opportunities.
+        - Monitor your dashboard to track the jobs you have committed to.
+
+        3. For Recruiters:
+        - Log in to your recruiter account.
+        - Post, update, or delete job opportunities and agency fee information.
+        - Track candidates who have recently committed to a job and agreed to pay the agency commission.
+        - Use the dashboard to manage candidates who have committed to your job opportunities.
+        - Explore a candidate's favorite jobs to gain valuable insights.
+
+<br>
+<br>
+
 ## Technology Stack
 
 - **Frontend**: The frontend of Connected is developed using React, ensuring a modern and dynamic user interface.
@@ -33,53 +67,48 @@ Connected is an application designed to streamline the process of connecting can
 - **Authentication**: The application includes authentication functionality using JSON Web Tokens (JWT), ensuring secure access for candidates and recruiters while protecting their sensitive information.
 - **API Key Protection**: Sensitive API key information is properly handled and protected on the server, implementing best practices for securing and managing sensitive data.
 
-## Getting Started
-
-To use Connected, follow these steps:
-
-1. Visit the Connected website and create an account as a candidate or recruiter.
-2. For Candidates:
-   - Set up your profile, including skills, experience, and desired timeline.
-   - Upload your resume(s) to showcase your qualifications.
-   - Research and review various staffing agencies to find the right match.
-   - View job opportunities and connect with recruiters.
-   - Partner with agencies and task them to find suitable jobs for you.
-   - Stage your resume for specific job opportunities.
-   - Monitor your dashboard to track the jobs you have committed to.
-3. For Recruiters:
-   - Log in to your recruiter account.
-   - Post, update, or delete job opportunities and agency fee information.
-   - Track candidates who have recently committed to a job and agreed to pay the agency commission.
-   - Use the dashboard to manage candidates who have committed to your job opportunities.
-   - Explore a candidate's favorite jobs to gain valuable insights.
+<br>
+<br>
 
 ## Development
 
 Connected was developed using modern web technologies. The application utilizes a combination of frontend and backend frameworks to deliver a seamless user experience. The codebase follows industry-standard best practices and is scalable for future enhancements.
 
-## Project Checklist
+<br>
+<br>
 
-Please check the boxes below to indicate that the project meets the specified criteria:
+## Acceptance Criteria and Project Checklist 
 
-- [x] Use React for the front end.
-- [x] Use GraphQL with a Node.js and Express.js server.
-- [x] Use MongoDB and the Mongoose ODM for the database.
-- [x] Use queries and mutations for retrieving, adding, updating, and deleting data.
-- [x] Be deployed using Heroku (with data).
-- [x] Have a polished UI.
-- [x] Be responsive.
-- [x] Be interactive (i.e., accept and respond to user input).
-- [x] Include authentication (JWT).
-- [x] Protect sensitive API key information on the server.
+        Please check the boxes below to indicate that the project meets the specified criteria:
 
+        - [x] Use React for the front end.
+        - [x] Use GraphQL with a Node.js and Express.js server.
+        - [x] Use MongoDB and the Mongoose ODM for the database.
+        - [x] Use queries and mutations for retrieving, adding, updating, and deleting data.
+        - [x] Be deployed using Heroku (with data).
+        - [x] Have a polished UI.
+        - [x] Be responsive.
+        - [x] Be interactive (i.e., accept and respond to user input).
+        - [x] Include authentication (JWT).
+        - [x] Protect sensitive API key information on the server.
+
+
+<br>
+<br>
 
 ## Feedback and Support
 
 If you encounter any issues while using Connected or have suggestions for improvement, please submit a detailed issue in the issue tracker on the project repository. Our team will review your feedback and provide timely support.
 
+<br>
+<br>
+
 ## License
 
 Connected is released under the [MIT License](LICENSE). You are free to use, modify, and distribute the application in accordance with the terms of the license.
+
+<br>
+<br>
 
 ## Screenshots
 ![screenshot](./client/src/images/ss-home.png)
