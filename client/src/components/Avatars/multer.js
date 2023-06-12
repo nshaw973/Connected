@@ -25,6 +25,7 @@ const FileUpload = () => {
         })
           .then(() => {
             console.log('Profile image updated successfully');
+            window.location.reload()
           })
           .catch((error) => {
             console.error('Error updating profile image:', error);
