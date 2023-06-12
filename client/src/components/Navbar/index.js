@@ -4,12 +4,12 @@ import Auth from '../../utils/auth';
 
 const Navbar = () => {
   //Search Functionality
+  const [searchType, setSearchType] = useState('jobs');
   const [searchTerm, setSearchTerm] = useState('');
   const handleSearch = (event) => {
     event.preventDefault();
     // Perform search logic with the search term
-    console.log('Search term:', searchTerm);
-    window.location.replace(`/search/${searchTerm}`);
+    window.location.replace(`/${searchType}/${searchTerm}`);
     // Reset the search term
     setSearchTerm('');
   };
@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gradient-to-l from-pink-300 via-purple-300 to-indigo-400 overflow:hidden">
-      <div className='mx-auto'>
+      <div className="mx-auto">
         <div className="flex items-center justify-between h-16 w-full">
           <div className="flex items-center">
             <div className="flex-shrink-0"></div>
@@ -44,22 +44,9 @@ const Navbar = () => {
               <div className="flex justify-center items-baseline space-x-4">
                 <Link
                   to="/"
-                  className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
+                  className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
                 >
                   Home
-                </Link>
-
-                <Link
-                  to="/jobs"
-                  className="md:block text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
-                >
-                  Find Jobs
-                </Link>
-                <Link
-                  to="/featured-candidates"
-                  className="md:block text-black transition-colors duration-300  hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
-                >
-                  Find Candidates
                 </Link>
               </div>
             </div>
@@ -88,10 +75,41 @@ const Navbar = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52 bg-white "
                 >
+                  {' '}
+                  {Auth.loggedIn() ? (
+                    <>
+                      <li>
+                        <Link
+                          className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
+                          to="/myportal"
+                        >
+                          Portal
+                        </Link>
+                      </li>
+                      <li>
+                        {' '}
+                        <button
+                          className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
+                          onClick={logout}
+                        >
+                          Logout
+                        </button>{' '}
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <Link
+                        to="/login"
+                        className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
+                      >
+                        Login
+                      </Link>
+                    </li>
+                  )}
                   <li>
                     <Link
                       to="/"
-                      className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
+                      className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
                     >
                       Home
                     </Link>
@@ -99,15 +117,15 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/jobs"
-                      className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
+                      className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
                     >
                       Find Jobs
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/featured-candidates"
-                      className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
+                      to="/candidates"
+                      className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
                     >
                       Find Candidates
                     </Link>
@@ -118,43 +136,57 @@ const Navbar = () => {
           )}
           <form
             onSubmit={handleSearch}
-            className="relative md:ml-4 sm:w-auto flex justify-content-center"
+            className="relative md:mx-4 sm:w-auto flex justify-content-center "
           >
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              className="bg-gray-900 text-black rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 w-48 md:w-96"
-              placeholder="Search..."
-            />
-
-            <button
-              type="submit"
-              className="absolute right-0 top-0 h-full px-4 text-white "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div className="flex">
+              <select
+                value={searchType}
+                onChange={(event) => setSearchType(event.target.value)}
+                className="bg-gray-900 text-white rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 15l5-5m0 0l-5-5m5 5H4"
-                />
-              </svg>
-            </button>
+                <option value="jobs">Job</option>
+                <option value="recruiter">Recruiter</option>
+                <option value="candidates">Candidate</option>
+              </select>
+
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                className="bg-gray-900 text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 w-48 md:w-96"
+                placeholder="Search..."
+              />
+
+              <button
+                type="submit"
+                className="absolute right-0 top-0 h-full px-4 text-white "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 15l5-5m0 0l-5-5m5 5H4"
+                  />
+                </svg>
+              </button>
+            </div>
           </form>
-          <div className="md:block">
+          <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
               {Auth.loggedIn() ? (
                 <>
-                  <div className="flex justify-end flex-1 px-2 dropdown dropdown-end">
+                  <div className=" flex justify-end flex-1 px-2 dropdown dropdown-end">
                     <div className="flex items-stretch">
-                    <h5 className='hidden lg:block text-black hover:text-black px-3 py-3 rounded-md text-md font-medium'>Welcome! {Auth.getProfile().data.username}</h5>
+                      <h5 className="hidden lg:block text-black hover:text-black px-3 py-3 rounded-md text-md font-medium">
+                        Welcome! {Auth.getProfile().data.username}
+                      </h5>
                       <div>
                         <label
                           tabIndex={0}
@@ -175,7 +207,7 @@ const Navbar = () => {
                         >
                           <li>
                             <Link
-                              className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
+                              className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
                               to="/myportal"
                             >
                               Portal
