@@ -34,6 +34,7 @@ export const QUERY_CHECKOUT = gql`
 export const QUERY_GET_ALL_JOBS = gql`
   query allJobs {
     jobs {
+      _id
       title
       company
       description
@@ -65,7 +66,7 @@ export const QUERY_GET_DEVELOPER_BY_ID = gql`
 export const QUERY_GET_RECRUITER_BY_ID = gql`
   query getRecruiterById($id: ID!) {
     getRecruiterById(id: $id) {
-      id
+      _id
       company
     }
   }
@@ -74,7 +75,7 @@ export const QUERY_GET_RECRUITER_BY_ID = gql`
 export const QUERY_GET_JOB_BY_ID = gql`
   query getJobById($id: ID!) {
     getJobById(id: $id) {
-      id
+      _id
       title
       company
       description

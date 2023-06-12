@@ -56,6 +56,14 @@ mutation updateProfileImage($profileImage: String!) {
   }
 }
 `
+export const ADD_TO_FAVORITES = gql`
+  mutation AddToFavorites($jobId: ID!) {
+    addToFavorites(jobId: $jobId) {
+      _id
+      favorites
+    }
+  }
+`;
 
 // // SL TODO  
 // export const CREATE_POST_MUTATION = gql`
