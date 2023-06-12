@@ -8,6 +8,9 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const handleSearch = (event) => {
     event.preventDefault();
+    if(searchTerm === '') {
+      return window.location.assign(`/${searchType}`);
+    }
     // Perform search logic with the search term
     window.location.assign(`/${searchType}/${searchTerm}`);
     // Reset the search term
