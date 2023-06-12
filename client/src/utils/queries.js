@@ -104,7 +104,7 @@ export const QUERY_DEVELOPERS = gql`
   }
 `;
 export const CREATE_DEVELOPER = gql`
-  mutation createDeveloper($githubUrl: String!) {
+  query createDeveloper($githubUrl: String!) {
     createDeveloper(githubUrl: $githubUrl) {
       id
       githubUrl
@@ -113,7 +113,7 @@ export const CREATE_DEVELOPER = gql`
 `;
 
 export const CREATE_RECRUITER = gql`
-  mutation createRecruiter($company: String!) {
+  query createRecruiter($company: String!) {
     createRecruiter(company: $company) {
       id
       company
@@ -122,7 +122,7 @@ export const CREATE_RECRUITER = gql`
 `;
 
 export const CREATE_JOB = gql`
-  mutation createJob($title: String!, $description: String!, $salary: Float!) {
+  query createJob($title: String!, $description: String!, $salary: Float!) {
     createJob(title: $title, description: $description, salary: $salary) {
       id
       title
@@ -133,7 +133,7 @@ export const CREATE_JOB = gql`
 `;
 
 export const DELETE_JOB = gql`
-  mutation deleteJob($jobId: ID!) {
+  query deleteJob($jobId: ID!) {
     deleteJob(jobId: $jobId) {
       id
       title
@@ -144,7 +144,7 @@ export const DELETE_JOB = gql`
 `;
 
 export const UPDATE_JOB_BY_ID = gql`
-  mutation updateJobById($jobId: ID!, $title: String!, $description: String!, $salary: Float!) {
+  query updateJobById($jobId: ID!, $title: String!, $description: String!, $salary: Float!) {
     updateJobById(jobId: $jobId, title: $title, description: $description, salary: $salary) {
       id
       title
@@ -155,7 +155,7 @@ export const UPDATE_JOB_BY_ID = gql`
 `;
 
 export const UPDATE_RECRUITER = gql`
-  mutation updateRecruiter($recruiterId: ID!, $company: String!) {
+  query updateRecruiter($recruiterId: ID!, $company: String!) {
     updateRecruiter(recruiterId: $recruiterId, company: $company) {
       id
       company
@@ -164,7 +164,7 @@ export const UPDATE_RECRUITER = gql`
 `;
 
 export const UPDATE_DEVELOPER = gql`
-  mutation updateDeveloper($developerId: ID!, $githubUrl: String!) {
+  query updateDeveloper($developerId: ID!, $githubUrl: String!) {
     updateDeveloper(developerId: $developerId, githubUrl: $githubUrl) {
       id
       githubUrl

@@ -7,6 +7,7 @@ import Auth from '../utils/auth';
 
 const RecruitePage = () => {
   const { username: userParam } = useParams();
+  console.log(userParam)
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -17,6 +18,7 @@ const RecruitePage = () => {
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/myportal" />;
   }
+  console.log(user)
 
   if (loading) {
     return <div>Loading...</div>;

@@ -3,73 +3,73 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800">
+    <footer className="bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800 ">
       <div className="max-w-7xl mx-auto py-12 px-2 sm:px-6 lg:px-8">
         <div className="flex justify-center space-x-6">
           <Link
             to="/"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             About
           </Link>
           <Link
             to="/jobs"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             Jobs
           </Link>
           <Link
             to="/featured-candidates"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             Featured Candidates
           </Link>
           <Link
             to="/contact"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             Contact
           </Link>
           <Link
             to="/policy"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             Privacy Policy
           </Link>
           <Link
             to="/donate"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            className="text-white font-semibold"
           >
             Donate
           </Link>
         </div>
         <div className="mt-8 flex justify-center space-x-6">
           <Link
-            href="www.facebook.com"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            to="www.facebook.com"
+            className="text-white font-semibold"
           >
             Facebook
           </Link>
           <Link
-            href="www.twitter.com"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            to="www.twitter.com"
+            className="text-white font-semibold"
           >
             Twitter
           </Link>
           <Link
-            href="www.instragram.com"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
+            to="www.instragram.com"
+            className="text-white font-semibold"
           >
             Instagram
           </Link>
         </div>
-        <div className="mt-8 text-center text-gray-300 text-sm">
+        <div className="mt-8 text-center text-white text-sm">
           &copy; {new Date().getFullYear()} Connected. All rights reserved.
         </div>
       </div>

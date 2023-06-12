@@ -42,15 +42,15 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto flex justify-center items-center flex-col flex-grow">
+    <div className="max-w-lg mx-auto flex justify-center items-center flex-col flex-grow rounded-lg">
       {data ? (
         <p>
           Success! You may now head <Link to="/">back to the homepage.</Link>
           <span className="loading loading-bars loading-lg"></span>
         </p>
       ) : (
-        <div className="hero bg-white w-max h-max">
-          <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero w-max h-max ">
+          <div className="hero-content flex-col lg:flex-row-reverse rounded bg-violet-500">
             <div className="text-center lg:text-left text-amber-50">
               <h1 className="text-5xl font-bold text-amber-50">Login now!</h1>
               <p className="py-6 text-amber-50">
@@ -59,7 +59,7 @@ const LoginForm = () => {
             </div>
             <form
               onSubmit={handleLogin}
-              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 min-w-[50%]"
+              className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 min-w-[50%]"
             >
               <div className="mb-4">
                 <label
@@ -69,7 +69,7 @@ const LoginForm = () => {
                   Email
                 </label>
                 <input
-                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
+                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white border-1 border-black"
                   id="email"
                   type="email"
                   name="email"
@@ -88,7 +88,7 @@ const LoginForm = () => {
                 </label>
                 <input
                 
-                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white border-1 border-black"
+                  className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white border-1 border-black"
                   id="password"
                   type="password"
                   name="password"

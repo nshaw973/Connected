@@ -10,14 +10,14 @@ const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find();
+      return User.find();
     },
     user: async (parent, { username }) => {
-      return await User.findOne({ username });
+      return User.findOne({ username });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -57,6 +57,7 @@ const resolvers = {
 
       return { token, user };
     },
+
 
     createCheckoutSession: async (parent, { amount }, context) => {
       try {
@@ -191,18 +192,6 @@ const resolvers = {
       return updatedDeveloper;
     },
   },
-
-  Query: {
-/*     searchJobsByTitle: async (parent, { searchTerm }, context) => {
-      const jobs = await Job.searchByTitle(searchTerm);
-      return jobs;
-    },
-
-    searchJobsBySalary: async (parent, { minSalary, maxSalary }, context) => {
-      const jobs = await Job.searchBySalary(minSalary, maxSalary);
-      return jobs;
-    } */
-  }
 };
 
 module.exports = resolvers;
