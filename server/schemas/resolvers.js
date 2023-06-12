@@ -81,6 +81,22 @@ const resolvers = {
       }
     },
 
+    addToFavorites: async (parent, { jobId }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('Must be logged in to perform this action');
+      }
+      try {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { favorites: jobId } },
+          { new: true }
+        );
+    
+        return user;
+      } catch (error) {
+        throw new Error('Failed to update favorites');
+      }
+    },
     createCheckoutSession: async (parent, { amount }, context) => {
       try {
         const url = new URL(context.headers.referer).origin;

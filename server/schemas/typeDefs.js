@@ -10,6 +10,7 @@ const typeDefs = gql`
     password: String
     recruiter: Boolean
     profileImage: String
+    favorites: [ID]!
   }
 
   type Auth {
@@ -28,7 +29,7 @@ const typeDefs = gql`
   }
 
   type Job {
-    id: ID!
+    _id: ID!
     title: String!
     company: String
     description: String!
@@ -63,6 +64,7 @@ const typeDefs = gql`
 
   type Mutation {
     updateProfileImage(profileImage: String!): User
+    addToFavorites(jobId: ID!): User
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, recruiter: Boolean!): Auth
     login(email: String!, password: String!): Auth
     createCheckoutSession(amount: Int!, donorId: ID): String!

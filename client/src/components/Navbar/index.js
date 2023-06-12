@@ -11,14 +11,14 @@ const Navbar = () => {
 
   const { data } = useQuery(QUERY_ME);
 
-  const user = data?.me || {}
-  const profilePic = ()=> {
+  const user = data?.me || {};
+  const profilePic = () => {
     if (!user.profileImage) {
-      return 'https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png'
+      return 'https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png';
     } else {
-      return `/uploads/${user.profileImage}`
+      return `/uploads/${user.profileImage}`;
     }
-  }
+  };
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -95,8 +95,8 @@ const Navbar = () => {
                   {' '}
                   {Auth.loggedIn() ? (
                     <>
-                      <li className="text-black transition-colors duration-300 px-3 py-2 rounded-md text-md font-medium font-semibold no-underline">
-                        <h2>{user.username}</h2>
+                      <li className="text-black">
+                        <h4>Hello, {user.username}</h4>
                       </li>
                       <li>
                         <Link
@@ -221,6 +221,9 @@ const Navbar = () => {
                           tabIndex={0}
                           className="menu dropdown-content p-2 shadow-lg bg-base-100 rounded-box w-52 mt-4 bg-white"
                         >
+                          <li className="text-black">
+                            <h4>Hello, {user.username}</h4>
+                          </li>
                           <li>
                             <Link
                               className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"

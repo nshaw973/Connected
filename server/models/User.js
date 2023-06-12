@@ -41,7 +41,13 @@ const userSchema = new Schema({
   },
   profileImage: {
     type: String,
-  }
+  },
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Job'
+    },
+  ],
 });
 
 userSchema.pre('save', async function (next) {
