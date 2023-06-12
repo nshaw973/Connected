@@ -60,7 +60,7 @@ const resolvers = {
 
     createCheckoutSession: async (parent, { amount }, context) => {
       try {
-        const url = 'https://limitless-journey-78350.herokuapp.com' || new URL(context.headers.referer).origin;
+        const url = new URL(context.headers.referer).origin;
         const id = context.user._id;
         // Create a new Stripe Checkout session
         const session = await stripe.checkout.sessions.create({
@@ -79,7 +79,7 @@ const resolvers = {
           ],
           mode: 'payment',
           success_url: `${url}/success`,
-          cancel_url: `${url}/cancel`,
+          cancel_url: `${url}/`,
         });
         // Fetch the donor details from the User model
         const donor = await User.findById(id);
