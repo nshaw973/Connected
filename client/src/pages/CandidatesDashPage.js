@@ -1,19 +1,19 @@
 import React from 'react';
-// import Candidate from '../components/Candidate';
-// import candidateData from '../placeholders/candidateData';
-import { Container, Row, Col, Card } from 'react-bootstrap'
-
-// import '../styles/style.css';
-
-// import './App.css';
-
+import FileUpload from '../components/Avatars/multer';
+import Auth from '../utils/auth';
 
 function CandidateDashPage() {
     return (
       <>
-      
+      <h1>Welcome! {Auth.getProfile().data.username}</h1>
       <h1>Candidate Dashboard</h1>
+      
+
       <br/>
+      <div>
+      <h3>Change Profile pic</h3>
+      <FileUpload />
+      </div>
 
       <h3>My Favorite Jobs </h3>
       <br/>
