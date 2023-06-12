@@ -43,7 +43,7 @@ const Donation = () => {
   return (
     <>
       {Auth.loggedIn() ? (
-        <div className="hero min-h-screen bg-white">
+        <div className="hero min-h-screen">
           <div className="hero-content flex-col">
             <img
               src="https://www.wildapricot.com/wp-content/uploads/2022/10/how-to-get-donations-18-ways.png"

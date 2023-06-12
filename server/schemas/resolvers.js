@@ -9,21 +9,30 @@ const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 const resolvers = {
   Query: {
+
+
+
+  },
+
+  Mutation: {
+    // IMPORTANT
+    // These are all Queries, the Query resolver is not working for some odd reason and wont fetch data, while mutation does
     users: async () => {
       return await User.find();
     },
+
     user: async (parent, { username }) => {
       return await User.findOne({ username });
     },
+    
     me: async (parent, args, context) => {
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-  },
 
-  Mutation: {
+    // Mutations
     addUser: async (
       parent,
       { firstName, lastName, username, email, password, recruiter }
@@ -57,6 +66,7 @@ const resolvers = {
 
       return { token, user };
     },
+
 
     createCheckoutSession: async (parent, { amount }, context) => {
       try {

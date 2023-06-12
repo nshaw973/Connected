@@ -49,7 +49,7 @@ const App = () => {
       <div className="xapp flex flex-col min-h-screen overflow-hidden">
         <Router>
           <Navbar />
-          <div className="flex justify-center items-center flex-col flex-grow cmpContainer">
+          <div className="flex justify-center items-center flex-col flex-grow cmpContainer home-background">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/jobs" element={<JobsPage />} />

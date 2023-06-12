@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  query me {
+  mutation me {
     me {
       _id
       username
@@ -11,7 +11,7 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
+  mutation user($username: String!) {
     user(username: $username) {
       _id
       username
@@ -22,7 +22,7 @@ export const QUERY_USER = gql`
 
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($donation: ID!) {
+  mutation getCheckout($donation: ID!) {
     checkout(donation: $donation) {
       session
     }
@@ -30,7 +30,7 @@ export const QUERY_CHECKOUT = gql`
 
 `;
 export const QUERY_GET_ALL_JOBS = gql`
-  query getAllJobs {
+  mutation getAllJobs {
     getAllJobs {
       id
       title
@@ -42,7 +42,7 @@ export const QUERY_GET_ALL_JOBS = gql`
 `;
 
 export const QUERY_GET_DEVELOPER_BY_ID = gql`
-  query getDeveloperById($id: ID!) {
+  mutation getDeveloperById($id: ID!) {
     getDeveloperById(id: $id) {
       id
       githubUrl
@@ -51,7 +51,7 @@ export const QUERY_GET_DEVELOPER_BY_ID = gql`
 `;
 
 export const QUERY_GET_RECRUITER_BY_ID = gql`
-  query getRecruiterById($id: ID!) {
+  mutation getRecruiterById($id: ID!) {
     getRecruiterById(id: $id) {
       id
       company
@@ -60,7 +60,7 @@ export const QUERY_GET_RECRUITER_BY_ID = gql`
 `;
 
 export const QUERY_GET_JOB_BY_ID = gql`
-  query getJobById($id: ID!) {
+  mutation getJobById($id: ID!) {
     getJobById(id: $id) {
       id
       title
@@ -72,7 +72,7 @@ export const QUERY_GET_JOB_BY_ID = gql`
 `;
 
 export const QUERY_JOBS = gql`
-  query jobs($title: String!) {
+  mutation jobs($title: String!) {
     jobs(title: $title) {
       id
       title
@@ -84,7 +84,7 @@ export const QUERY_JOBS = gql`
 `;
 
 export const QUERY_RECRUITERS = gql`
-  query recruiters($firstName: String!, $lastName: String!, $company: String!) {
+  mutation recruiters($firstName: String!, $lastName: String!, $company: String!) {
     recruiters(firstName: $firstName, lastName: $lastName, company: $company) {
       id
       firstName
@@ -95,7 +95,7 @@ export const QUERY_RECRUITERS = gql`
 `;
 
 export const QUERY_DEVELOPERS = gql`
-  query developers($firstName: String!, $lastName: String!, $company: String!) {
+  mutation developers($firstName: String!, $lastName: String!, $company: String!) {
     developers(firstName: $firstName, lastName: $lastName) {
       id
       firstName

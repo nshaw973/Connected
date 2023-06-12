@@ -52,7 +52,7 @@ const SignupForm = () => {
           Success! You may now head <Link to="/">back to the homepage.</Link>
         </p>
       ) : (
-        <div className="hero bg-white w-100vw lg:w-max h-max">
+        <div className="hero w-100vw lg:w-max h-max">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center text-amber-50">
               <h1 className="text-5xl font-bold text-amber-50">Welcome!</h1>
@@ -68,7 +68,7 @@ const SignupForm = () => {
             </div>
             <form
               onSubmit={handleSubmit}
-              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full "
+              className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 w-full "
             >
               <div className="flex justify-center items-center flex-col lg:items-start lg:flex-row w-full">
                 {/* personal info */}
