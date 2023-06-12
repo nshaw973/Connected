@@ -51,6 +51,8 @@ const typeDefs = gql`
   }
 
   type Query {
+    jobs: [Job]
+
     user(username: String!): User
     me: User
     donation(_id: ID, donationAmount: Float): Donation
@@ -60,7 +62,7 @@ const typeDefs = gql`
     getJobById(id: ID!): Job
     getProjectById(id: ID!): Project
     getAllJobs: [Job!]!
-    jobs(title: String!): [Job!]!
+    # jobs(title: String!): [Job!]!
     recruiters(firstName: String!, lastName: String!, company: String!): [Recruiter!]!
     developers(firstName: String!, lastName: String!, company: String!): [Developer!]!
   }

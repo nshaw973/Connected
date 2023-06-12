@@ -37,14 +37,42 @@ const resolvers = {
       const project = await Project.findById(id);
       return project;
     },
+    // getAllJobs: async () => {
+    //   return Job.find();
+    // },
+
+    // getAllJobs: async () => {
+    //   try {
+    //     const jobs = await Job.find();
+    //     return jobs;
+    //   } catch (error) {
+    //     throw new Error('Failed to fetch jobs.');
+    //   }
+    // },
+
+
     getAllJobs: async () => {
-      return Job.find();
+      try {
+        const jobs = await Job.find();
+        return jobs;
+      } catch (error) {
+        console.error('Failed to fetch jobs:', error);
+        throw new Error('Failed to fetch jobs.');
+      }
+
     },
-    jobs: async (parent, { title, company }) => {
-      const jobs = await Job.find({ title, company });
-      return jobs;
-    },
-    recruiters: async (parent, { firstName, lastName, company }) => {
+
+    
+    // jobs: async (parent, { title, company }) => {
+      //   const jobs = await Job.find({ title, company });
+      //   return jobs;
+      // },
+      jobs: async () => {
+        return await Job.find({});
+      },
+
+
+      recruiters: async (parent, { firstName, lastName, company }) => {
       const recruiters = await Recruiter.find({
         firstName,
         lastName,
