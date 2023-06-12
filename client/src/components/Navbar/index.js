@@ -35,7 +35,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-gray-800 overflow:hidden">
+    <nav className="bg-gradient-to-l from-pink-300 via-purple-300 to-indigo-400 overflow:hidden">
       <div className='mx-auto'>
         <div className="flex items-center justify-between h-16 w-full">
           <div className="flex items-center">
@@ -44,20 +44,20 @@ const Navbar = () => {
               <div className="flex justify-center items-baseline space-x-4">
                 <Link
                   to="/"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                 >
                   Home
                 </Link>
 
                 <Link
                   to="/jobs"
-                  className="md:block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="md:block text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                 >
                   Find Jobs
                 </Link>
                 <Link
                   to="/featured-candidates"
-                  className="md:block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="md:block text-black transition-colors duration-300  hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                 >
                   Find Candidates
                 </Link>
@@ -71,8 +71,8 @@ const Navbar = () => {
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mix-blend-lighten text-white"
-                    fill="curret"
+                    className="h-8 w-8 mix-blend-lighten text-white"
+                    fill="current"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
@@ -86,12 +86,12 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-gray-800"
+                  className="menu menu-sm dropdown-content mt-3 p-2 shadow-lg bg-base-100 rounded-box w-52 bg-white "
                 >
                   <li>
                     <Link
                       to="/"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                     >
                       Home
                     </Link>
@@ -99,7 +99,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/jobs"
-                      className="md:block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                     >
                       Find Jobs
                     </Link>
@@ -107,7 +107,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       to="/featured-candidates"
-                      className="md:block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="md:block transition-colors duration-300 text-black hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                     >
                       Find Candidates
                     </Link>
@@ -124,13 +124,13 @@ const Navbar = () => {
               type="text"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              className="bg-gray-900 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 w-48 md:w-96"
+              className="bg-gray-900 text-black rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 w-48 md:w-96"
               placeholder="Search..."
             />
 
             <button
               type="submit"
-              className="absolute right-0 top-0 h-full px-4 text-gray-300 hover:bg-gray-700 "
+              className="absolute right-0 top-0 h-full px-4 text-white "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -152,16 +152,16 @@ const Navbar = () => {
             <div className="ml-4 flex items-center md:ml-6">
               {Auth.loggedIn() ? (
                 <>
-                  <div className="flex justify-end flex-1 px-2">
+                  <div className="flex justify-end flex-1 px-2 dropdown dropdown-end">
                     <div className="flex items-stretch">
-                    <h5 className='hidden lg:block text-gray-300 hover:text-white px-3 py-3 rounded-md text-sm font-medium'>Welcome! {Auth.getProfile().data.username}</h5>
-                      <div className="dropdown dropdown-end">
+                    <h5 className='hidden lg:block text-black hover:text-black px-3 py-3 rounded-md text-md font-medium'>Welcome! {Auth.getProfile().data.username}</h5>
+                      <div>
                         <label
                           tabIndex={0}
-                          className="btn btn-ghost rounded-btn"
+                          className="btn rounded-btn transition-colors duration-300 hover:bg-white"
                         >
                           <div className="avatar">
-                            <div className="w-8 rounded-full">
+                            <div className="w-8 h-8 rounded-full">
                               <img
                                 src="https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png"
                                 alt="avatar"
@@ -171,11 +171,11 @@ const Navbar = () => {
                         </label>
                         <ul
                           tabIndex={0}
-                          className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4 bg-gray-800"
+                          className="menu dropdown-content p-2 shadow-lg bg-base-100 rounded-box w-52 mt-4 bg-white"
                         >
                           <li>
                             <Link
-                              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                              className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                               to="/myportal"
                             >
                               Portal
@@ -184,7 +184,7 @@ const Navbar = () => {
                           <li>
                             {' '}
                             <button
-                              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                              className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                               onClick={logout}
                             >
                               Logout
@@ -197,12 +197,12 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <a
-                    href="/login"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  <Link
+                    to="/login"
+                    className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold"
                   >
                     Login
-                  </a>
+                  </Link>
                 </>
               )}
             </div>

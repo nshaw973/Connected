@@ -1,7 +1,7 @@
 import React from 'react';
 // import Candidate from '../components/Candidate';
 // import candidateData from '../placeholders/candidateData';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
@@ -15,8 +15,8 @@ import NewPost  from '../components/NewPost';
 function RecruiterDashPage() {
 
   const { loading, data } = useQuery(QUERY_ME);
-  console.log(data)
-  console.log(Auth.getProfile().data)
+  const user = data?.me || {}
+  console.log(user)
   if (loading) {
     return <div>Loading...</div>;
   }

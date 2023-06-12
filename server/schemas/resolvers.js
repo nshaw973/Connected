@@ -2,9 +2,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const {
   User,
   Job,
-  Developer,
-  Recruiter,
-  Project,
   Donation,
 } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -12,80 +9,17 @@ const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 const resolvers = {
   Query: {
-    user: async () => {
+    users: async () => {
       return User.find();
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username });
     },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('Error, you need to be logged in!');
-    },
-    getDeveloperById: async (parent, { id }, context) => {
-      const developer = await Developer.findById(id);
-      return developer;
-    },
-    getRecruiterById: async (parent, { id }, context) => {
-      const recruiter = await Recruiter.findById(id);
-      return recruiter;
-    },
-    getJobById: async (parent, { id }, context) => {
-      const job = await Job.findById(id);
-      return job;
-    },
-    getProjectById: async (parent, { id }, context) => {
-      const project = await Project.findById(id);
-      return project;
-    },
-    // getAllJobs: async () => {
-    //   return Job.find();
-    // },
-
-    // getAllJobs: async () => {
-    //   try {
-    //     const jobs = await Job.find();
-    //     return jobs;
-    //   } catch (error) {
-    //     throw new Error('Failed to fetch jobs.');
-    //   }
-    // },
-
-
-    getAllJobs: async () => {
-      try {
-        const jobs = await Job.find();
-        return jobs;
-      } catch (error) {
-        console.error('Failed to fetch jobs:', error);
-        throw new Error('Failed to fetch jobs.');
-      }
-
-    },
-
-    
-    // jobs: async (parent, { title, company }) => {
-      //   const jobs = await Job.find({ title, company });
-      //   return jobs;
-      // },
-      jobs: async () => {
-        return await Job.find({});
-      },
-
-
-      recruiters: async (parent, { firstName, lastName, company }) => {
-      const recruiters = await Recruiter.find({
-        firstName,
-        lastName,
-        company,
-      });
-      return recruiters;
-    },
-    developers: async (parent, { firstName, lastName }) => {
-      const developers = await Developer.find({
-        firstName,
-        lastName,
-      });
-      return developers;
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 
@@ -124,6 +58,7 @@ const resolvers = {
       return { token, user };
     },
 
+
     createCheckoutSession: async (parent, { amount }, context) => {
       try {
         const url = new URL(context.headers.referer).origin;
@@ -144,8 +79,8 @@ const resolvers = {
             },
           ],
           mode: 'payment',
-          success_url: `${url}/success`, // Redirect URL after successful payment
-          cancel_url: `${url}/cancel`, // Redirect URL after canceled payment
+          success_url: `${url}/success`,
+          cancel_url: `${url}/`,
         });
         // Fetch the donor details from the User model
         const donor = await User.findById(id);
@@ -160,7 +95,6 @@ const resolvers = {
           donor: donor._id,
         });
         await donation.save();
-        console.log(donation);
         return session.id;
       } catch (error) {
         console.error(error);
@@ -258,18 +192,6 @@ const resolvers = {
       return updatedDeveloper;
     },
   },
-
-  Query: {
-/*     searchJobsByTitle: async (parent, { searchTerm }, context) => {
-      const jobs = await Job.searchByTitle(searchTerm);
-      return jobs;
-    },
-
-    searchJobsBySalary: async (parent, { minSalary, maxSalary }, context) => {
-      const jobs = await Job.searchBySalary(minSalary, maxSalary);
-      return jobs;
-    } */
-  }
 };
 
 module.exports = resolvers;
