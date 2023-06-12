@@ -23,7 +23,7 @@ function HomePage() {
               </Link>
               <Link
                 className="candidates-btn btn btn-primary btn-block btn-info"
-                to="/featured-candidates"
+                to="/candidates"
               >
                 Find Candidates
               </Link>

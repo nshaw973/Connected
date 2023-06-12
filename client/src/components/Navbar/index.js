@@ -9,7 +9,7 @@ const Navbar = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     // Perform search logic with the search term
-    window.location.replace(`/${searchType}/${searchTerm}`);
+    window.location.assign(`/${searchType}/${searchTerm}`);
     // Reset the search term
     setSearchTerm('');
   };

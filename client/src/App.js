@@ -53,10 +53,15 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/jobs" element={<JobsPage />} />
+              <Route path="/jobs/" element={<JobsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/myportal" element={<RecruiterDashPage />} />
+              <Route path="/recruiter" element={<RecruiterPage />} />
+              <Route path="/recruiter/" element={<RecruiterPage />} />
               <Route path="/recruiter/:username" element={<RecruiterPage />} />
               <Route path="/candidates" element={<FeaturedCandidatePage />} />
+              <Route path="/candidates/" element={<FeaturedCandidatePage />} />
+              <Route path="/candidates/:username" element={<FeaturedCandidatePage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/donate" element={<Donate />} />
