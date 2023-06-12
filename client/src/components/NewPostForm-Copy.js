@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col } from 'react-bootstrap';
+// import { Button, Col } from 'react-bootstrap';
 
 function newPostForm() {
     const post = document.querySelectorAll('.blogpost');

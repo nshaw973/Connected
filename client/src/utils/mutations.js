@@ -24,6 +24,42 @@ export const ADD_USER = gql`
   }
 `;
 
+export const CREATE_JOB = gql`
+
+  mutation createJob($title: String!, $company: company, $description: String!, $salary: Float) {
+
+    createJob(title: $title, company: $company, description: $description, salary: $salary) {
+      id
+      title
+      company
+      description
+      salary
+    }
+  }
+`;
+
+export const CREATE_JOB_MUTATION = gql`
+  mutation createJob($title: String!, $company: String, $description: String!, $salary: Float) {
+    createJob(title: $title, company: $company, description: $description, salary: $salary) {
+      title
+      company
+      description
+      salary
+    }
+  }
+`;
+
+// // SL TODO  
+// export const CREATE_POST_MUTATION = gql`
+//   mutation createPost($title: String!, $description: String!) {
+//     createPost(title: $title, description: $description) {
+//       id
+//       title
+//       description
+//       salary
+//     }
+//   }
+// `;
 export const CREATE_CHECKOUT_SESSION = gql`
   mutation CreateCheckoutSession($amount: Int!) {
     createCheckoutSession(amount: $amount)
@@ -48,19 +84,6 @@ export const CREATE_RECRUITER = gql`
   }
 `;
 
-export const CREATE_JOB = gql`
-
-  mutation createJob($title: String!, $company: company, $description: String!, $salary: Float!) {
-
-    createJob(title: $title, company: $company, description: $description, salary: $salary) {
-      id
-      title
-      company
-      description
-      salary
-    }
-  }
-`;
 
 export const DELETE_JOB = gql`
   mutation deleteJob($jobId: ID!) {
