@@ -37,6 +37,7 @@ export const QUERY_GET_ALL_JOBS = gql`
       company
       description
       salary
+      jobAuthor
     }
   }
 `;
@@ -134,11 +135,12 @@ export const CREATE_RECRUITER = gql`
 
 export const CREATE_JOB = gql`
   query createJob($title: String!, $description: String!, $salary: Float!) {
-    createJob(title: $title, description: $description, salary: $salary) {
+    createJob(title: $title, description: $description, salary: $salary, jobAuthor: String) {
       id
       title
       description
       salary
+      jobAuthor
     }
   }
 `;

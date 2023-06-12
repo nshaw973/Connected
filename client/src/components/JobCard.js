@@ -2,10 +2,30 @@ import React from 'react';
 
 import searchedJobsData from '../placeholders/searchedJobsData';
 import { Button, Col } from 'react-bootstrap';
+//
+import { QUERY_GET_ALL_JOBS } from '../utils/queries';
+import { useQuery } from '@apollo/client';  
+// import { getCurrentUser } from '../utils/auth';
+// import { getProfile } from '../utils/auth';
+import Auth from '../utils/auth';
+
 
 function JobCard({ title }) {
+  const { loading, data } = useQuery(QUERY_GET_ALL_JOBS);
+  const jobs = data?.jobs || [];
 
-  const myJobs = searchedJobsData.filter(jobs => jobs.agency === 'Robert Half');
+  const currentUser = Auth.getProfile().data.username
+
+  // const myJobs = searchedJobsData.filter(jobs => jobs.agency === 'Robert Haf');
+  const myJobs = jobs.filter(jobs => jobs.jobAuthor === currentUser);
+  
+  console.log(currentUser)
+  console.log(jobs.jobAuthor)
+
+  if (!myJobs.length) {
+    return <h4>No Job Post Yet</h4>;
+  }
+
 
   return (
     <>
@@ -16,7 +36,7 @@ function JobCard({ title }) {
         <div className="stats bg-primary text-primary-content">
         
         <div className="stat" >
-          <div className="stat-title" style={{color: "white"}}>{jobs.agency}</div>
+          <div className="stat-title" style={{color: "white"}}>{jobs.company}</div>
           <div className="stat-value" style={{color: "white"}}>{jobs.title}</div>
           <div className="stat-actions">
           <button className="btn btn-sm btn-success" style={{color: "white"}}>Close Job Applications</button>
