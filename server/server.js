@@ -86,6 +86,13 @@ app.get('/recruiter', (req, res) => {
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+app.get('/image/:filename', (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(__dirname, 'uploads', filename);
+  
+  res.sendFile(filePath);
+});
+
 const startApolloServer = async () => {
   await server.start();
   server.applyMiddleware({ app });
