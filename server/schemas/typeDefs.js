@@ -29,6 +29,7 @@ const typeDefs = gql`
   type Job {
     id: ID!
     title: String!
+    company: String
     description: String!
     salary: Float
   }
@@ -64,7 +65,8 @@ const typeDefs = gql`
     createCheckoutSession(amount: Int!, donorId: ID): String!
     createDeveloper(githubUrl: String!): Developer!
     createRecruiter(company: String!): Recruiter!
-    createJob(title: String!, company: String!, description: String!, salary: Float!): Job!
+    # createPost(title: String!, description: String!): Post!
+    createJob(title: String!, company: String, description: String!, salary: Float): Job!
     deleteJob(jobId: ID!): Job
     updateJobById(jobId: ID!, title: String!, description: String!, salary: Float!): Job
     updateRecruiter(recruiterId: ID!, company: String!): Recruiter!

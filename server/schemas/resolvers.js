@@ -116,16 +116,36 @@ const resolvers = {
     },
 
 
+//  SL TODO
+    // createPost: async (parent, { title, description, salary }, context) => {
+    //   const job = await Job.create({
+    //     title,
+    //     description,
+    //     salary,
+    //   });
+    //   return job;
+    // },
 
-    createJob: async (parent, { title, company, description, salary }, context) => {
+
+    createJob: async (_, { title, company, description, salary }) => {
       const job = await Job.create({
         title,
         company,
         description,
         salary,
       });
-      return job.toObject();
+      return job;
     },
+
+    // createJob: async (parent, { title, company, description, salary }, context) => {
+    //   const job = await Job.create({
+    //     title,
+    //     company,
+    //     description,
+    //     salary,
+    //   });
+    //   return job;
+    // },
 
     createProject: async (
       parent,
