@@ -12,7 +12,7 @@ function CandidatesSubmitted() {
     <div className="Candidate-list row">
       {submittedCandidates.map((candidate, index) => (
         <Col key={candidate.jobsId}  className="Candidate-card">
-              <Card md={3} >
+              <div md={3} >
                       <Candidate
                         key={index}
                         name={candidate.name}
@@ -21,7 +21,7 @@ function CandidatesSubmitted() {
                         deployedLink={candidate.deployedLink}
                         githubLink={candidate.githubLink}
                       />
-               </Card>
+               </div>
         </Col>
       ))}
     </div>

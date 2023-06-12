@@ -12,7 +12,7 @@ function CandidatesPlaced() {
     <div className="Candidate-list row">
       {placedCandidates.map((candidate, index) => (
         <Col  className="Candidate-card">
-              <Card key={candidate.jobsId} md={3} >
+              <div key={candidate.jobsId} md={3} >
                       <Candidate
                         key={index}
                         name={candidate.name}
@@ -21,7 +21,7 @@ function CandidatesPlaced() {
                         deployedLink={candidate.deployedLink}
                         githubLink={candidate.githubLink}
                       />
-               </Card>
+               </div>
         </Col>
       ))}
     </div>

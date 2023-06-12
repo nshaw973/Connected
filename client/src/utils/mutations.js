@@ -103,6 +103,7 @@ export const DELETE_JOB = gql`
       company
       description
       salary
+      jobAuthor
     }
   }
 `;
