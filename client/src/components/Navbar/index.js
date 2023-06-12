@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import { QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const Navbar = () => {
   //Search Functionality
   const [searchType, setSearchType] = useState('jobs');
   const [searchTerm, setSearchTerm] = useState('');
+
+  const { data } = useQuery(QUERY_ME);
+
+  const user = data?.me || {}
+  const profilePic = ()=> {
+    if (!user.profileImage) {
+      return 'https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png'
+    } else {
+      return `/uploads/${user.profileImage}`
+    }
+  }
+
   const handleSearch = (event) => {
     event.preventDefault();
-    if(searchTerm === '') {
+    if (searchTerm === '') {
       return window.location.assign(`/${searchType}`);
     }
     // Perform search logic with the search term
@@ -81,6 +95,9 @@ const Navbar = () => {
                   {' '}
                   {Auth.loggedIn() ? (
                     <>
+                      <li className="text-black transition-colors duration-300 px-3 py-2 rounded-md text-md font-medium font-semibold no-underline">
+                        <h2>{user.username}</h2>
+                      </li>
                       <li>
                         <Link
                           className="text-black transition-colors duration-300 hover:bg-white hover:text-black px-3 py-2 rounded-md text-md font-medium font-semibold no-underline"
@@ -194,8 +211,8 @@ const Navbar = () => {
                           <div className="avatar">
                             <div className="w-8 h-8 rounded-full">
                               <img
-                                src="https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png"
-                                alt="avatar"
+                                src={profilePic()}
+                                alt='A'
                               />
                             </div>
                           </div>

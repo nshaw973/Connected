@@ -6,6 +6,7 @@ import Auth from '../utils/auth';
 import CandidatesCommitted from '../components/CandidatesCommitted';
 import CandidatesSubmitted from '../components/CandidatesSubmitted';
 import CandidatesPlaced from '../components/CandidatesPlaced';
+import FileUpload from '../components/Avatars/multer';
 import JobCard from '../components/JobCard';
 import NewPost from '../components/NewPost';
 
@@ -29,6 +30,10 @@ function RecruiterDashPage() {
     <>
       <h1>Recruiter Dashboard</h1>
       <br />
+      <div>
+      <h3>Change Profile pic</h3>
+      <FileUpload />
+      </div>
 
       <h3>My Job Postings</h3>
       <br />

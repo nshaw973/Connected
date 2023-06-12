@@ -51,6 +51,14 @@ export const CREATE_JOB_MUTATION = gql`
   }
 `;
 
+export const UPDATE_PROFILE_IMAGE = gql`
+mutation updateProfileImage($profileImage: String!) {
+  updateProfileImage(profileImage: $profileImage) {
+    profileImage
+  }
+}
+`
+
 // // SL TODO  
 // export const CREATE_POST_MUTATION = gql`
 //   mutation createPost($title: String!, $description: String!) {
