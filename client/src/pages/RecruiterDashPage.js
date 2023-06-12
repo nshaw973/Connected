@@ -35,6 +35,10 @@ function RecruiterDashPage() {
       <FileUpload />
       </div>
 
+      
+      <br />
+      <br />
+      <br />
       <h3>My Job Postings</h3>
       <br />
       <JobCard />
