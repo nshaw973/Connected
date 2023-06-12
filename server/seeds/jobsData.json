@@ -1,0 +1,21 @@
+[
+    {
+      "title": "Software Engineer",
+      "company": "ABC Technologies",
+      "description": "We are seeking a skilled software engineer to join our development team...",
+      "salary": 80000
+    },
+    {
+      "title": "Marketing Specialist",
+      "company": "XYZ Inc.",
+      "description": "We are looking for a creative and analytical marketing specialist...",
+      "salary": 60000
+    },
+    {
+      "title": "Data Analyst",
+      "company": "123 Corporation",
+      "description": "We are hiring a data analyst to analyze and interpret complex data...",
+      "salary": 70000
+    }
+  ]
+  

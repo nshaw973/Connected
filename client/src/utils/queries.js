@@ -30,9 +30,8 @@ export const QUERY_CHECKOUT = gql`
 
 `;
 export const QUERY_GET_ALL_JOBS = gql`
-  query getAllJobs {
-    getAllJobs {
-      id
+  query allJobs {
+    jobs {
       title
       company
       description
@@ -40,6 +39,17 @@ export const QUERY_GET_ALL_JOBS = gql`
     }
   }
 `;
+// export const QUERY_GET_ALL_JOBS = gql`
+//   query getAllJobs {
+//     getAllJobs {
+//       id
+//       title
+//       company
+//       description
+//       salary
+//     }
+//   }
+// `;
 
 export const QUERY_GET_DEVELOPER_BY_ID = gql`
   query getDeveloperById($id: ID!) {

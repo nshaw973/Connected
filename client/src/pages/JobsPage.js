@@ -17,11 +17,17 @@ import searchedJobsData from '../placeholders/searchedJobsData';
 
 import Auth from '../utils/auth';
 
+//
+import { QUERY_GET_ALL_JOBS } from '../utils/queries';
+import { useQuery } from '@apollo/client';  
 
 const JobsPage = () => {
   // TODO: create state to hold saved JobsId values
 //   const [savedJobsIds, setSavedJobsIds] = useState(getSavedJobsIds());
 //   const [saveJobs] = useMutation(SAVE_JOBS);
+
+const { loading, data } = useQuery(QUERY_GET_ALL_JOBS);
+const jobs = data?.jobs || [];
 
 const handleSaveJobs = async (jobsId) => {
     /***** 
@@ -69,9 +75,10 @@ const handleSaveJobs = async (jobsId) => {
             ? `Viewing ${searchedjobss.length} results:`
             : 'Search for a jobs to begin'} */}
         Current Jobs
+        
         </h2>
         <Row>
-        {searchedJobsData.map((jobs) => {
+        {jobs.map((jobs) => {
                 return (
                 <Col key={jobs.jobsId} md="4" style={{ paddingRight: "40px", paddingBottom: "40px" }}>
                     <Card key={jobs.jobsId} border='dark' >
@@ -80,7 +87,8 @@ const handleSaveJobs = async (jobsId) => {
 
                         <Card.Title>{jobs.title}</Card.Title>
                         <p className='small'>Recruiter: {jobs.recruiterName}</p>
-                        <p className='small'>Agency: {jobs.agency}</p>
+                        <p className='small'>Agency: {jobs.company}</p>
+                        <p className='small'>salary: {jobs.salary}</p>
                         <Card.Text>{jobs.description}</Card.Text>
 
                         {/* {Auth.loggedIn() && ( */}
