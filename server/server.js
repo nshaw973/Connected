@@ -83,15 +83,7 @@ app.get('/myportal/recruiter', (req, res) => {
 app.get('/recruiter', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-app.get('/:filename', (req, res) => {
-  const filename = req.params.filename;
-  const filePath = path.join(__dirname, 'uploads', filename);
-  
-  res.sendFile(filePath);
-});
+app.use('/uploads', express.static('uploads'));
 
 const startApolloServer = async () => {
   await server.start();
