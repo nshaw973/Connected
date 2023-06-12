@@ -210,7 +210,10 @@ const Navbar = () => {
                         >
                           <div className="avatar">
                             <div className="w-8 h-8 rounded-full">
-                              <img src={profilePic()} alt="avatar" />
+                              <img
+                                src={profilePic()}
+                                alt='A'
+                              />
                             </div>
                           </div>
                         </label>
