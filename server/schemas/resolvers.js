@@ -79,7 +79,7 @@ const resolvers = {
           ],
           mode: 'payment',
           success_url: `${url}/success`,
-          cancel_url: `${url}/cancel`,
+          cancel_url: `${url}/`,
         });
         // Fetch the donor details from the User model
         const donor = await User.findById(id);

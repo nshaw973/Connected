@@ -6,42 +6,42 @@ const Footer = () => {
     <footer className="bg-gray-800">
       <div className="max-w-7xl mx-auto py-12 px-2 sm:px-6 lg:px-8">
         <div className="flex justify-center space-x-6">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Home
-          </a>
-          <a
-            href="/about"
+          </Link>
+          <Link
+            to="/about"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             About
-          </a>
-          <a
-            href="/jobs"
+          </Link>
+          <Link
+            to="/jobs"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Jobs
-          </a>
-          <a
-            href="/featured-candidates"
+          </Link>
+          <Link
+            to="/featured-candidates"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Featured Candidates
-          </a>
-          <a
-            href="/contact"
+          </Link>
+          <Link
+            to="/contact"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Contact
-          </a>
-          <a
-            href="/policy"
+          </Link>
+          <Link
+            to="/policy"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Privacy Policy
-          </a>
+          </Link>
           <Link
             to="/donate"
             className="text-gray-300 hover:text-white transition-colors duration-300"
@@ -50,24 +50,24 @@ const Footer = () => {
           </Link>
         </div>
         <div className="mt-8 flex justify-center space-x-6">
-          <a
+          <Link
             href="www.facebook.com"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Facebook
-          </a>
-          <a
+          </Link>
+          <Link
             href="www.twitter.com"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Twitter
-          </a>
-          <a
+          </Link>
+          <Link
             href="www.instragram.com"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Instagram
-          </a>
+          </Link>
         </div>
         <div className="mt-8 text-center text-gray-300 text-sm">
           &copy; {new Date().getFullYear()} Connected. All rights reserved.
