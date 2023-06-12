@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -17,17 +17,26 @@ const SignupForm = () => {
 
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
+  useEffect(() => {
+    setFormState((prevState) => ({
+      ...prevState,
+      recruiter: isRecruiter,
+    }));
+  }, [isRecruiter]);
+
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type, checked } = event.target;
+
+    const fieldValue = type === 'checkbox' ? checked : value;
 
     setFormState({
       ...signupForm,
-      [name]: value,
+      [name]: fieldValue,
     });
   };
 
   const handleCheckboxChange = (event) => {
-    setIsRecruiter(event.target.checked);
+    setIsRecruiter(!isRecruiter);
   };
 
   const handleSubmit = async (event) => {
