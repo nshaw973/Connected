@@ -25,6 +25,7 @@ import Signup from './pages/Signup';
 // Styling
 import './index.css';
 import Portal from './pages/Portal';
+import DeveloperPage from './pages/DeveloperPage';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -61,8 +62,8 @@ const App = () => {
               <Route path="/myportal/developer" element={<CandidateDashPage />} />
               <Route path="/recruiter" element={<RecruiterPage />} />
               <Route path="/recruiter/:username" element={<RecruiterPage />} />
-              <Route path="/candidates" element={<FeaturedCandidatePage />} />
-              <Route path="/candidates/:username" element={<FeaturedCandidatePage />} />
+              <Route path="/developers" element={<FeaturedCandidatePage />} />
+              <Route path="/developers/:username" element={<DeveloperPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/donate" element={<Donate />} />

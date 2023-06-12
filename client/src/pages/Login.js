@@ -27,7 +27,7 @@ const LoginForm = () => {
       const { data } = await login({
         variables: { ...loginForm },
       });
-      console.log(data)
+      console.log(data);
 
       Auth.login(data.login.token);
 
@@ -35,7 +35,6 @@ const LoginForm = () => {
         email: '',
         password: '',
       });
-
     } catch (e) {
       console.error(e);
     }
@@ -87,7 +86,6 @@ const LoginForm = () => {
                   Password
                 </label>
                 <input
-                
                   className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white border-1 border-black"
                   id="password"
                   type="password"
