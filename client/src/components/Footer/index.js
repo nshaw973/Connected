@@ -25,7 +25,7 @@ const Footer = () => {
             Jobs
           </Link>
           <Link
-            to="/featured-candidates"
+            to="/candidates"
             className="text-white font-semibold"
           >
             Featured Candidates

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { CREATE_CHECKOUT_SESSION } from '../utils/mutations';
 import Auth from '../utils/auth';
 
@@ -91,7 +92,7 @@ const Donation = () => {
           </div>
         </div>
       ) : (
-        <h1> Please Log in if you'd like to donate! :) </h1>
+        <h1> Please <Link to="/login">login</Link> if you'd like to donate! :) </h1>
       )}
     </>
   );

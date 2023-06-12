@@ -24,6 +24,14 @@ const RecruitePage = () => {
     return <div>Loading...</div>;
   }
 
+  if (!user?.username) {
+    return (
+      <h4>
+        Sorry Could not find user with that name.
+      </h4>
+    );
+  }
+  
   return (
     <>
     <h1>{user.username}</h1>

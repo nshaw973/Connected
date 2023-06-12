@@ -1,7 +1,7 @@
 import React from 'react';
 // import Candidate from '../components/Candidate';
 // import candidateData from '../placeholders/candidateData';
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
