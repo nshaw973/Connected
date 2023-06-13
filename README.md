@@ -1,7 +1,8 @@
 # Connected
 ##
 
-[Deployed App](https://connected-recruiters.herokuapp.com/)
+[Deployed App](https://connected-g7.herokuapp.com/)
+
 
 ## Description
 Connected is an application designed to streamline the process of connecting candidates with the right staffing agencies or recruiters to help them secure the best-paying job opportunities quickly. 
