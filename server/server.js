@@ -74,13 +74,19 @@ app.get('/jobs', (req, res) => {
 app.get('/myportal/developer', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-app.get('/developer', (req, res) => {
+app.get('/developers', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/developers/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 app.get('/myportal/recruiter', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 app.get('/recruiter', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+app.get('/recruiter/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 app.use('/uploads', express.static('uploads'));
